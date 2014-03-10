@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">autocaption</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Date & Time -->
+    <string name="date_widgets_example_dateDisplay_text"></string>
+    <string name="date_widgets_example_pickTime12_text">change the time (12 hour)</string>
+    <string name="date_widgets_example_pickTime24_text">change the time (24 hour)</string>
+    <string name="date_widgets_example_pickDate_text">change the date</string>
+    
+    <!-- Event -->
+    <string name="event">Event</string>
+    
+    <!-- Venue -->
+    <string name="venue">Venue</string>
+    
+    <!-- Persons -->
+    <string name="persons">Persons</string>
+    
+    <!-- Sentences -->
+    <string name="sentence_1">Sentence 1: </string>
+    <string name="sentence_1_hint">Date and Time only</string>
+    <string name="sentence_2">Sentence 2: </string>
+    <string name="sentence_2_hint">All</string>
+
+</resources>

@@ -1,0 +1,142 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <!-- Date & Time -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/dateDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/date_widgets_example_dateDisplay_text" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/pickDate"
+                android:layout_weight="1"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:text="@string/date_widgets_example_pickDate_text" />
+
+            <Button
+                android:id="@+id/pickTime12"
+                android:layout_weight="1"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:text="@string/date_widgets_example_pickTime12_text" />
+
+            <Button
+                android:id="@+id/pickTime24"
+                android:layout_weight="1"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:text="@string/date_widgets_example_pickTime24_text" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Event -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/event" />
+    </LinearLayout>
+
+    <!-- Venue -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/venue" />
+    </LinearLayout>
+
+    <!-- Persons -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/persons" />
+    </LinearLayout>
+
+    <!-- Sentence 1 -->
+
+    <LinearLayout
+        android:id="@+id/sentence_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sentence_1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sentence_1_hint" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Sentence 2 -->
+
+    <LinearLayout
+        android:id="@+id/sentence_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sentence_2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sentence_2_hint" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
