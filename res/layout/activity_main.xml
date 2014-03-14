@@ -29,23 +29,23 @@
 
             <Button
                 android:id="@+id/pickDate"
-                android:layout_weight="1"
                 android:layout_width="0px"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/date_widgets_example_pickDate_text" />
 
             <Button
                 android:id="@+id/pickTime12"
-                android:layout_weight="1"
                 android:layout_width="0px"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/date_widgets_example_pickTime12_text" />
 
             <Button
                 android:id="@+id/pickTime24"
-                android:layout_weight="1"
                 android:layout_width="0px"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/date_widgets_example_pickTime24_text" />
         </LinearLayout>
     </LinearLayout>
@@ -55,12 +55,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="horizontal" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/event" />
+
+        <EditText
+            android:id="@+id/event"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/event" />
     </LinearLayout>
 
     <!-- Venue -->
@@ -68,12 +75,45 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="horizontal" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/venue" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RadioGroup
+                android:id="@+id/venue_type_radio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/city_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/city_type" />
+
+                <RadioButton
+                    android:id="@+id/location_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/location_type" />
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/venue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/venue" />
+        </LinearLayout>
     </LinearLayout>
 
     <!-- Persons -->
@@ -92,7 +132,6 @@
     <!-- Sentence 1 -->
 
     <LinearLayout
-        android:id="@+id/sentence_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
@@ -112,12 +151,18 @@
                 android:layout_height="wrap_content"
                 android:text="@string/sentence_1_hint" />
         </LinearLayout>
+
+        <EditText
+            android:id="@+id/sentence_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/sentence_1" />
     </LinearLayout>
 
     <!-- Sentence 2 -->
 
     <LinearLayout
-        android:id="@+id/sentence_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
@@ -137,6 +182,13 @@
                 android:layout_height="wrap_content"
                 android:text="@string/sentence_2_hint" />
         </LinearLayout>
+
+        <EditText
+            android:id="@+id/sentence_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/sentence_2" />
     </LinearLayout>
 
 </LinearLayout>
