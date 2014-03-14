@@ -17,7 +17,8 @@ import android.widget.TimePicker;
 public class MainActivity extends Activity {
 
 	// where we display the selected date and time
-	private TextView mDateDisplay;
+	private Button mDateButton;
+	private Button mTimeButton;
 
 	// date and time
 	private int mYear;
@@ -36,10 +37,10 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		mDateDisplay = (TextView) findViewById(R.id.dateDisplay);
+		mDateButton = (Button) findViewById(R.id.pickDate);
+		mTimeButton = (Button) findViewById(R.id.pickTime24);
 
 		setDialogOnClickListener(R.id.pickDate, DATE_DIALOG_ID);
-		setDialogOnClickListener(R.id.pickTime12, TIME_12_DIALOG_ID);
 		setDialogOnClickListener(R.id.pickTime24, TIME_24_DIALOG_ID);
 
 		final Calendar c = Calendar.getInstance();
@@ -96,10 +97,12 @@ public class MainActivity extends Activity {
 	}
 
 	private void updateDisplay() {
-		mDateDisplay.setText(new StringBuilder()
+		mDateButton.setText(new StringBuilder()
 				// Month is 0 based so add 1
 				.append(mMonth + 1).append("-").append(mDay).append("-")
-				.append(mYear).append(" ").append(pad(mHour)).append(":")
+				.append(mYear));
+
+		mTimeButton.setText(new StringBuilder().append(pad(mHour)).append(":")
 				.append(pad(mMinute)));
 	}
 
