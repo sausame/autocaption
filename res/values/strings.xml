@@ -17,6 +17,7 @@
     
     <!-- Persons -->
     <string name="persons">Persons</string>
+    <string name="persons_hint">Name1; Name2; Name3</string>
     
     <!-- Action -->
     <string name="submit">Submit</string>

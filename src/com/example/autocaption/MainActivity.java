@@ -7,10 +7,14 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.text.format.Time;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -21,6 +25,7 @@ public class MainActivity extends Activity {
 	private Button mTimeButton;
 
 	// date and time
+	private Time mTime = new Time();
 	private int mYear;
 	private int mMonth;
 	private int mDay;
@@ -31,9 +36,12 @@ public class MainActivity extends Activity {
 	static final int TIME_24_DIALOG_ID = 1;
 	static final int DATE_DIALOG_ID = 2;
 
+	//
+	private TextView mSentence1TextView;
+	private TextView mSentence2TextView;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
@@ -43,12 +51,22 @@ public class MainActivity extends Activity {
 		setDialogOnClickListener(R.id.pickDate, DATE_DIALOG_ID);
 		setDialogOnClickListener(R.id.pickTime24, TIME_24_DIALOG_ID);
 
+		Button b = (Button) findViewById(R.id.submit);
+		b.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				submit();
+			}
+		});
+
 		final Calendar c = Calendar.getInstance();
 		mYear = c.get(Calendar.YEAR);
 		mMonth = c.get(Calendar.MONTH);
 		mDay = c.get(Calendar.DAY_OF_MONTH);
 		mHour = c.get(Calendar.HOUR_OF_DAY);
 		mMinute = c.get(Calendar.MINUTE);
+
+		mSentence1TextView = (TextView) findViewById(R.id.sentence_1);
+		mSentence2TextView = (TextView) findViewById(R.id.sentence_2);
 
 		updateDisplay();
 	}
@@ -104,6 +122,8 @@ public class MainActivity extends Activity {
 
 		mTimeButton.setText(new StringBuilder().append(pad(mHour)).append(":")
 				.append(pad(mMinute)));
+
+		mTime.set(0, mMinute, mHour, mDay, mMonth, mYear);
 	}
 
 	private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
@@ -133,4 +153,33 @@ public class MainActivity extends Activity {
 			return "0" + String.valueOf(c);
 	}
 
+	protected void submit() {
+		String event = ((EditText) this.findViewById(R.id.event)).getText()
+				.toString();
+		Venue venue = new Venue();
+		venue.type = ((RadioGroup) this.findViewById(R.id.venue_type_radio))
+				.getCheckedRadioButtonId();
+		venue.value = ((EditText) this.findViewById(R.id.venue)).getText()
+				.toString();
+
+		String personStr = ((EditText) this.findViewById(R.id.persons))
+				.getText().toString();
+		String[] persons = personStr.split(";");
+
+		String sentence1 = AutoCaption.generateSentence1(mTime);
+		String sentence2 = AutoCaption.generateSentence2(mTime, event, venue,
+				persons);
+
+		Log.v("oooooo", "Time: " + mTime);
+		Log.v("oooooo", "Event: " + event);
+		Log.v("oooooo", "Venue: " + venue.type + ", " + venue.value);
+		Log.v("oooooo", "Person: " + personStr);
+		
+		for (String person: persons) {
+			Log.v("oooooo", "---" + person);
+		}
+
+		mSentence1TextView.setText(sentence1);
+		mSentence2TextView.setText(sentence2);
+	}
 }
