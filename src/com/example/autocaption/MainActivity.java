@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
 	private Button mTimeButton;
 
 	// date and time
-	private Time mTime = new Time();
+	private Date mDate = new Date();
 	private int mYear;
 	private int mMonth;
 	private int mDay;
@@ -124,7 +124,12 @@ public class MainActivity extends Activity {
 		mTimeButton.setText(new StringBuilder().append(pad(mHour)).append(":")
 				.append(pad(mMinute)));
 
-		mTime.set(0, mMinute, mHour, mDay, mMonth, mYear);
+		mDate.setDate(mDay);
+		mDate.setHours(mHour);
+		mDate.setMinutes(mMinute);
+		mDate.setMonth(mMonth);
+		mDate.setSeconds(0);
+		mDate.setYear(mYear);
 	}
 
 	private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
@@ -167,11 +172,11 @@ public class MainActivity extends Activity {
 				.getText().toString();
 		String[] persons = personStr.split(";");
 
-		String sentence1 = AutoCaption.generateSentence1(this, mTime);
-		String sentence2 = AutoCaption.generateSentence2(this, mTime, event, venue,
+		String sentence1 = AutoCaption.generateSentence1(this, mDate);
+		String sentence2 = AutoCaption.generateSentence2(this, mDate, event, venue,
 				persons);
 
-		Log.v("oooooo", "Time: " + mTime);
+		Log.v("oooooo", "Date: " + mDate);
 		Log.v("oooooo", "Event: " + event);
 		Log.v("oooooo", "Venue: " + venue.type + ", " + venue.value);
 		Log.v("oooooo", "Person: " + personStr);
@@ -180,7 +185,7 @@ public class MainActivity extends Activity {
 			Log.v("oooooo", "---" + person);
 		}
 
-		Log.v("oooooo", "=====" + AutoCaption.calulateDays(mTime));
+		Log.v("oooooo", "=====" + AutoCaption.calulateDays(mDate));
 		
 		mSentence1TextView.setText(sentence1);
 		mSentence2TextView.setText(sentence2);
