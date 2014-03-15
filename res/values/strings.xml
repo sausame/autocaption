@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string name="app_name">autocaption</string>
     <string name="action_settings">Settings</string>
@@ -21,16 +21,65 @@
     
     <!-- Action -->
     <string name="submit">Submit</string>
-    
-    <!-- Sentences -->
-    <string name="sentence_1">Sentence 1: </string>
-    <string name="sentence_1_hint">Date and Time only</string>
-    <string name="sentence_2">Sentence 2: </string>
-    <string name="sentence_2_hint">All</string>
 
+    <!-- Sentences -->
+    <string name="sentence_1_label">Sentence 1: </string>
+    <string name="sentence_1_hint">Date and Time only</string>
+	<string name="sentence_1"><xliff:g id="brief_date">%1$s</xliff:g><xliff:g id="brief_date">%2$s</xliff:g><xliff:g id="brief_date">%3$s</xliff:g></string>
+
+    <string name="sentence_2_label">Sentence 2: </string>
+    <string name="sentence_2_hint">All</string>
+    
 	<!-- Date -->
     <string name="today">Today</string>
     <string name="yesterday">Yesterday</string>
 
+	<!-- Date Format -->
+	<!-- 1. BriefDate, 2. Time. 3. Date -->
+	<string name="date_piece">
+		<xliff:g id="brief_date">%1$s</xliff:g>
+		<xliff:g id="brief_date">%2$s</xliff:g>
+		<xliff:g id="brief_date">%3$s</xliff:g>
+	</string>
 
+	<!-- Birthday -->
+    <plurals name="day_age">
+        <item quantity="one">one day</item>
+        <item quantity="other"><xliff:g id="number">%1$s</xliff:g> days</item>
+    </plurals>
+
+    <plurals name="week_age">
+        <item quantity="one">one week</item>
+        <item quantity="other"><xliff:g id="number">%1$s</xliff:g> weeks</item>
+    </plurals>
+
+    <plurals name="month_age">
+        <item quantity="one">one month</item>
+        <item quantity="other"><xliff:g id="number">%1$s</xliff:g> months</item>
+    </plurals>
+
+    <plurals name="year_age">
+        <item quantity="one">one year</item>
+        <item quantity="other"><xliff:g id="number">%1$s</xliff:g> years</item>
+    </plurals>
+
+	<!-- Each Person -->
+	<string name="each_person_piece"><xliff:g id="name">%1$s</xliff:g>(<xliff:g id="birthday">%2$s</xliff:g>)</string>
+
+	<!-- Persons -->
+	<string name="one_person_piece"><xliff:g id="person_1">%1$s</xliff:g></string>
+	<string name="two_person_piece"><xliff:g id="person_1">%1$s</xliff:g> and <xliff:g id="person_2">%2$s</xliff:g></string>
+	<string name="three_person_piece"><xliff:g id="person_1">%1$s</xliff:g>, <xliff:g id="person_2">%2$s</xliff:g> and <xliff:g id="person_3">%3$s</xliff:g></string>
+	<string name="other_person_piece"><xliff:g id="person_1">%1$s</xliff:g>, <xliff:g id="person_2">%2$s</xliff:g>, <xliff:g id="person_3">%3$s</xliff:g>...</string>
+
+    <!-- Sentences -->
+    <string name="sentence_date_only_label">Sentence: Date and Time only</string>
+	<string name="sentence_date_only"><xliff:g id="date">%1$s</xliff:g></string>
+
+    <string name="sentence_date_event_label">Sentence: Date and Event</string>
+	<string name="sentence_date_event"><xliff:g id="date">%1$s</xliff:g> on <xliff:g id="date">%1$s</xliff:g></string>
+
+    <string name="sentence_2_label">Sentence 2: </string>
+    <string name="sentence_2_hint">All</string>
+ 
 </resources>

@@ -29,4 +29,8 @@ public class SimpleResources {
 		return -1;
 	}
 
+	public static Resources getResources(Context ctx) {
+		return ctx.getResources();
+	}
+
 }

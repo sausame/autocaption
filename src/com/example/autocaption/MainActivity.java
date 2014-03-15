@@ -168,9 +168,18 @@ public class MainActivity extends Activity {
 		venue.value = ((EditText) this.findViewById(R.id.venue)).getText()
 				.toString();
 
-		String personStr = ((EditText) this.findViewById(R.id.persons))
+		String personNameStr = ((EditText) this.findViewById(R.id.persons))
 				.getText().toString();
-		String[] persons = personStr.split(";");
+		String[] personNames = personNameStr.split(";");
+
+		Person[] persons = new Person[personNames.length];
+
+		for (int index = 0; index < personNames.length; index ++) {
+			Log.v("oooooo", "---" + personNames[index]);
+			persons[i] = new Person;
+			persons[i].date = new Date();
+			persons[i].name = personNames[index];
+		}
 
 		String sentence1 = AutoCaption.generateSentence1(this, mDate);
 		String sentence2 = AutoCaption.generateSentence2(this, mDate, event, venue,
@@ -181,10 +190,6 @@ public class MainActivity extends Activity {
 		Log.v("oooooo", "Venue: " + venue.type + ", " + venue.value);
 		Log.v("oooooo", "Person: " + personStr);
 		
-		for (String person: persons) {
-			Log.v("oooooo", "---" + person);
-		}
-
 		Log.v("oooooo", "=====" + AutoCaption.calulateDays(mDate));
 		
 		mSentence1TextView.setText(sentence1);

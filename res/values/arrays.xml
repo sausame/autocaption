@@ -43,7 +43,7 @@
         <item>Last Sunday</item>
     </string-array>
 
-    <array name="hour_indexs" translatable="false">
+    <integer-array name="hour_indexs" translatable="false">
         <item>6</item>
         <item>8</item>
         <item>12</item>
@@ -51,7 +51,7 @@
         <item>18</item>
         <item>22</item>
         <item>24</item>
-    </array>
+    </integer-array>
 
     <string-array name="hour_values">
         <item>Night</item>
@@ -63,6 +63,9 @@
         <item>Night</item>
     </string-array>
 
-
+    <string-array name="venue_types_string_values">
+        <item>In</item>
+        <item>At</item>
+    </string-array>
 
 </resources>
