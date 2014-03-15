@@ -29,19 +29,75 @@ public class AutoCaption {
 		private Context mCtx;
 	}
 
-	public static int calulateDays(Time time) {
-		Date date = new Date();
-		date.setTime(time.normalize(false));
+	public static int compareDate(Date date1, Date date2) {
+		Calendar calendar = Calendar.getInstance();
 
-		Calendar c = Calendar.getInstance();
+		calendar.setTime(date1);
+		int day1 = calendar.get(Calendar.DAY_OF_YEAR);
 
-		c.setTime(new Date());
-		int nowDay = c.get(Calendar.DAY_OF_YEAR);
+		calendar.setTime(date2);
+		int day2 = calendar.get(Calendar.DAY_OF_YEAR);
 
-		c.setTime(date);
-		int theDay = c.get(Calendar.DAY_OF_YEAR);
+		return day2 - day1;
+	}
 
-		return theDay - nowDay;
+	public static int getDayOfWeek(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+
+		return calendar.get(Calendar.DAY_OF_WEEK) - 1;
+    }
+
+	public static int compareToday(Date date) {
+		return compareDate(date, new Date());
+	}
+
+	public static int compareFirstDayInLastWeek(Date date) {
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(new Date());
+
+		calendar.set(Calendar.DAY_OF_WEEK, 1);
+		int day1 = calendar.get(Calendar.DAY_OF_YEAR);
+
+		calendar.setTime(date);
+		int day2 = calendar.get(Calendar.DAY_OF_YEAR);
+
+		return day2 - day1;
+	}
+
+	public static String getDayString(Date date) {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		return formatter.format(date);
+	}
+
+	public static int getHourOfDay(Date date) {
+		Calendar calendar = Calendar.getInstance();
+
+		calendar.setTime(date);
+		int day = calendar.get(Calendar.HOUR_OF_DAY);
+
+		return day;
+	}
+
+	public static String getStringValue(Context ctx, int arrayResId, int index) { 
+		String[] values = ctx.getResources().getStringArray(arrayResId);
+		if (index >= 0 && index < values.length && !values[index].isEmpty()) {
+			return values[index];
+		}
+
+		return null;
+	}
+
+	public static int getIndexByValue(Context ctx, int arrayResId, int value) {
+		int[] values = ctx.getResources().getIntArray(arrayResId);
+
+		for (int index = 0; index < values.length; index ++) {
+			if (value <= values[index]) {
+				return index;
+			}
+		}
+
+		return -1;
 	}
 
 	public static class Sentence1 extends Sentence {
@@ -51,40 +107,51 @@ public class AutoCaption {
 
 		public Sentence1 setTime(Time time) {
 			mTime = time;
+
+			mDate = new Date();
+			mDate.setTime(time.normalize(false));
+
 			return this;
 		}
 
 		private void generateDate() {
-			int diff = calulateDays(mTime);
+			// 1. Check the named days.
+			int diff = compareToday(mDate);
 
-			if (diff < 0) {
-				diff *= -1;
-				// Check the named days.
-				// 0, today
-				// 1, yesterday
-				// 2, the day before yesterday
-				// 3, the bigger day before yesterday
-				String[] namedDays = getStringArray(R.array.named_days_string_values);
-				if (diff < namedDays.length && !namedDays[diff].isEmpty()) {
-					mDateString = namedDays[diff];
-					return;
-				}
-
-				// if (R.array.days_near_string_values)
-
-				// Check in the last week.
+			mDateString = getStringValue(mCtx, R.array.named_days_string_values, -1 * diff);
+			if (mDateString != null && !mDateString.isEmpty()) 
+				return;
 			}
 
-			// Others.
+			// 2. Check if it's in this week
+			diff = compareFirstDayInLastWeek(mDate);
+
+			mDateString = getStringValue(mCtx, R.array.days_in_week_string_values, diff);
+			if (mDateString != null && !mDateString.isEmpty()) 
+				return;
+			}
+
+			// 3. Check if it's in the last week.
+			mDateString = getStringValue(mCtx, R.array.days_in_last_week_string_values, -1 * diff);
+			if (mDateString != null && !mDateString.isEmpty()) 
+				return;
+			}
+
+			// 4. Others.
+			mDateString = getDayString(mDate);
 		}
 
 		private void generateTime() {
+			int hour = getHourOfDay(mDate);
+			int index = getIndexByValue(mCtx, R.array.hour_values, hour);
+			mTimeString = getStringValue(index);
 		}
 
 		public String generate() {
 			return null;
 		}
 
+		private Date mDate;
 		private Time mTime;
 
 		private String mDateString;

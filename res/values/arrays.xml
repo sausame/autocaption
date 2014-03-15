@@ -23,6 +23,16 @@
         <item>the bigger day before yesterday</item>
     </string-array>
 
+    <string-array name="days_in_week_string_values">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+
     <string-array name="days_in_last_week_string_values">
         <item>Last Monday</item>
         <item>Last Tuesday</item>
@@ -33,8 +43,26 @@
         <item>Last Sunday</item>
     </string-array>
 
-    <string-array name="day_values" translatable="false">
-        <item>0</item>
+    <array name="hour_indexs" translatable="false">
+        <item>6</item>
+        <item>8</item>
+        <item>12</item>
+        <item>14</item>
+        <item>18</item>
+        <item>22</item>
+        <item>24</item>
+    </array>
+
+    <string-array name="hour_values">
+        <item>Night</item>
+        <item>Before Dawn</item>
+        <item>Morning</item>
+        <item>Noon</item>
+        <item>Afternoon</item>
+        <item>Evening</item>
+        <item>Night</item>
     </string-array>
+
+
 
 </resources>
