@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (C) 2008 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ -->
+
+<resources>
+    <string-array name="named_days_string_values">
+        <item>@string/today</item>
+        <item>@string/yesterday</item>
+        <item>the day before yesterday</item>
+        <item>the bigger day before yesterday</item>
+    </string-array>
+
+    <string-array name="days_in_last_week_string_values">
+        <item>Last Monday</item>
+        <item>Last Tuesday</item>
+        <item>Last Wednesday</item>
+        <item>Last Thursday</item>
+        <item>Last Friday</item>
+        <item>Last Saturday</item>
+        <item>Last Sunday</item>
+    </string-array>
+
+    <string-array name="day_values" translatable="false">
+        <item>0</item>
+    </string-array>
+
+</resources>

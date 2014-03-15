@@ -28,4 +28,9 @@
     <string name="sentence_2">Sentence 2: </string>
     <string name="sentence_2_hint">All</string>
 
+	<!-- Date -->
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
+
+
 </resources>

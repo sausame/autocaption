@@ -1,6 +1,7 @@
 package com.example.autocaption;
 
 import java.util.Calendar;
+import java.util.Date;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -166,8 +167,8 @@ public class MainActivity extends Activity {
 				.getText().toString();
 		String[] persons = personStr.split(";");
 
-		String sentence1 = AutoCaption.generateSentence1(mTime);
-		String sentence2 = AutoCaption.generateSentence2(mTime, event, venue,
+		String sentence1 = AutoCaption.generateSentence1(this, mTime);
+		String sentence2 = AutoCaption.generateSentence2(this, mTime, event, venue,
 				persons);
 
 		Log.v("oooooo", "Time: " + mTime);
@@ -179,6 +180,8 @@ public class MainActivity extends Activity {
 			Log.v("oooooo", "---" + person);
 		}
 
+		Log.v("oooooo", "=====" + AutoCaption.calulateDays(mTime));
+		
 		mSentence1TextView.setText(sentence1);
 		mSentence2TextView.setText(sentence2);
 	}
