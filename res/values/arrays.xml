@@ -82,7 +82,7 @@
     </string-array>
 
 	<!-- [Date Event Venue Person], each number means the number of each part, and 9 means that the number is not 0 nor in the others number which exist in the list. -->
-    <integer-array name="rule_indexes" translatable="false">
+    <integer-array name="rule_ids" translatable="false">
         <item>0x1000</item>
         <item>0x1100</item>
         <item>0x1010</item>
@@ -112,6 +112,14 @@
         <item>0x1FFF</item>
     </integer-array>
 
+	<!-- Each byte means one of [NAMED-DATE] [UPPER-NAMED-DATE] [LOWER-NAMED-DATE] [DATE] [TIME] from upper to lower -->
+    <integer-array name="date_rules_fields">
+        <item>0x01011</item>
+        <item>0x00010</item>
+        <item>0x00111</item>
+        <item>0x00010</item>
+    </integer-array>
+
     <string-array name="date_rules">
         <item>[UPPER-NAMED-DATE] [TIME] ([DATE])</item>
         <item>[DATE]</item>
@@ -126,9 +134,14 @@
         <item>9919:in [CITY]</item>
     </string-array>
 
+    <integer-array name="sentence_rules_masks">
+        <item>0x1000</item>
+        <item>0x1010</item>
+    </integer-array>
+
     <string-array name="sentence_rules">
-        <item>1000:[DATE-PIECE]</item>
-        <item>1010:[VENUE-PIECE] [DATE-PIECE]</item>
+        <item>[DATE-PIECE]</item>
+        <item>[VENUE-PIECE] [DATE-PIECE]</item>
     </string-array>
 
 </resources>

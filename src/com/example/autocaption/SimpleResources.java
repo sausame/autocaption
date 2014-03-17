@@ -19,12 +19,28 @@ public class SimpleResources {
         int[] values = ctx.getResources().getIntArray(arrayResId);
 
         for (int index = 0; index < values.length; index++) {
+            if (value == values[index]) {
+                return index;
+            }
+        }
+
+        return -1;
+    }
+
+    public static int getMaxIndexLessThanValue(Context ctx, int arrayResId, int value) {
+        int[] values = ctx.getResources().getIntArray(arrayResId);
+
+        for (int index = 0; index < values.length; index++) {
             if (value <= values[index]) {
                 return index;
             }
         }
 
         return -1;
+    }
+
+    public static int[] getIntArray(Context ctx, int arrayResId) {
+        return ctx.getResources().getIntArray(arrayResId);
     }
 
     public static Resources getResources(Context ctx) {

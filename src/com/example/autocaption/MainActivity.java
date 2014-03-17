@@ -191,7 +191,7 @@ public class MainActivity extends Activity {
         	Log.v("a = " + a + ", " + Integer.toHexString(a));
         }
         
-        as = getResources().getIntArray(R.array.rule_indexes);
+        as = getResources().getIntArray(R.array.rule_ids);
         for (int a: as) {
         	Log.v("b = " + a + ", " + Integer.toHexString(a));
         }
