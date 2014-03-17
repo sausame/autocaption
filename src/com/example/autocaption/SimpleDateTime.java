@@ -1,147 +1,175 @@
 package com.example.autocaption;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
-import android.content.Context;
-import android.text.format.Time;
+import java.util.GregorianCalendar;
 
 public class SimpleDateTime {
 
-	public static int compareDate(Date date1, Date date2) {
-		Calendar calendar = Calendar.getInstance();
+    public static Date getDate(int year, int month, int day, int hour, int minute) {
+        Calendar calendar = Calendar.getInstance();
 
-		calendar.setTime(date1);
-		int day1 = calendar.get(Calendar.DAY_OF_YEAR);
+        calendar.set(year, month, day, hour, minute);
 
-		calendar.setTime(date2);
-		int day2 = calendar.get(Calendar.DAY_OF_YEAR);
+		return calendar.getTime();
+    }
 
-		return day2 - day1;
+    public static int compareDate(Date date1, Date date2) {
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.setTime(date1);
+        int day1 = calendar.get(Calendar.DAY_OF_YEAR);
+
+        calendar.setTime(date2);
+        int day2 = calendar.get(Calendar.DAY_OF_YEAR);
+
+        return day2 - day1;
+    }
+
+    public static int getDayOfWeek(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+
+        return calendar.get(Calendar.DAY_OF_WEEK) - 1;
+    }
+
+    public static int compareToday(Date date) {
+        return compareDate(new Date(), date);
+    }
+
+    public static int getDayInWeek(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+
+        return calendar.get(Calendar.DAY_OF_WEEK) - 1;
 	}
 
-	public static int getDayOfWeek(Date date) {
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(date);
-
-		return calendar.get(Calendar.DAY_OF_WEEK) - 1;
+    public static int getTodayInWeek() {
+        return getDayInWeek(new Date());
 	}
 
-	public static int compareToday(Date date) {
-		return compareDate(date, new Date());
+    public static int compareFirstDayInThisWeek(Date date) {
+        int diff = compareToday(date);
+		int dayInWeek = getTodayInWeek();
+
+		return (diff + dayInWeek);
 	}
 
-	public static int compareFirstDayInLastWeek(Date date) {
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(new Date());
+    public static int compareFirstDayInLastWeek(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
 
-		calendar.set(Calendar.DAY_OF_WEEK, 1);
-		int day1 = calendar.get(Calendar.DAY_OF_YEAR);
+        calendar.set(Calendar.DAY_OF_WEEK, 1); // This sunday.
+        calendar.add(Calendar.DATE, -1);
+        calendar.set(Calendar.DAY_OF_WEEK, 1); // Last sunday.
 
-		calendar.setTime(date);
-		int day2 = calendar.get(Calendar.DAY_OF_YEAR);
+        int day1 = calendar.get(Calendar.DAY_OF_YEAR);
 
-		return day2 - day1;
-	}
+        calendar.setTime(date);
+        int day2 = calendar.get(Calendar.DAY_OF_YEAR);
 
-	public static String getDayString(Date date) {
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		return formatter.format(date);
-	}
+        return day2 - day1;
+    }
 
-	public static int getHourOfDay(Date date) {
-		Calendar calendar = Calendar.getInstance();
+    public static String getDayString(Date date) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        return formatter.format(date);
+    }
 
-		calendar.setTime(date);
-		int day = calendar.get(Calendar.HOUR_OF_DAY);
+    public static int getHourOfDay(Date date) {
+        Calendar calendar = Calendar.getInstance();
 
-		return day;
-	}
+        calendar.setTime(date);
+        int day = calendar.get(Calendar.HOUR_OF_DAY);
 
-	public static int[] getNeturalAge(Date birthday) {
-		Calendar calendarBirth = new GregorianCalendar();
-		Calendar calendarNow = new GregorianCalendar();
+        return day;
+    }
 
-		calendarBirth.setTime(date);
-		calendarNow.setTime(new Date());
+    public static int[] getNeturalAge(Date birthday) {
+        Calendar calendarBirth = new GregorianCalendar();
+        Calendar calendarNow = new GregorianCalendar();
 
-		return getNeturalAge(calendarBirth, calendarNow);
-	}
+        calendarBirth.setTime(birthday);
+        calendarNow.setTime(new Date());
 
-	public static int[] getNeturalAge(Calendar calendarBirth,
-			Calendar calendarNow) {
-		int diffYears = 0, diffMonths, diffDays;
-		int dayOfBirth = calendarBirth.get(Calendar.DAY_OF_MONTH);
-		int dayOfNow = calendarNow.get(Calendar.DAY_OF_MONTH);
-		if (dayOfBirth <= dayOfNow) {
-			diffMonths = getMonthsOfAge(calendarBirth, calendarNow);
-			diffDays = dayOfNow - dayOfBirth;
-			if (diffMonths == 0) {
-				diffDays++;
-			}
-		} else {
-			if (isEndOfMonth(calendarBirth)) {
-				if (isEndOfMonth(calendarNow)) {
-					diffMonths = getMonthsOfAge(calendarBirth, calendarNow);
-					diffDays = 0;
-				} else {
-					calendarNow.add(Calendar.MONTH, -1);
-					diffMonths = getMonthsOfAge(calendarBirth, calendarNow);
-					diffDays = dayOfNow + 1;
-				}
-			} else {
-				if (isEndOfMonth(calendarNow)) {
-					diffMonths = getMonthsOfAge(calendarBirth, calendarNow);
-					diffDays = 0;
-				} else {
-					calendarNow.add(Calendar.MONTH, -1); // last month
-					diffMonths = getMonthsOfAge(calendarBirth, calendarNow);
+        return getNeturalAge(calendarBirth, calendarNow);
+    }
 
-					// Get the latest one in last month
-					int maxDayOfLastMonth = calendarNow
-							.getActualMaximum(Calendar.DAY_OF_MONTH);
-					if (maxDayOfLastMonth > dayOfBirth) {
-						diffDays = maxDayOfLastMonth - dayOfBirth + dayOfNow;
-					} else {
-						diffDays = dayOfNow;
-					}
-				}
-			}
-		}
+    public static int[] getNeturalAge(Calendar calendarBirth,
+                                      Calendar calendarNow) {
+        int diffYears = 0, diffMonths, diffDays;
+        int dayOfBirth = calendarBirth.get(Calendar.DAY_OF_MONTH);
+        int dayOfNow = calendarNow.get(Calendar.DAY_OF_MONTH);
+        if (dayOfBirth <= dayOfNow) {
+            diffMonths = getMonthsOfAge(calendarBirth, calendarNow);
+            diffDays = dayOfNow - dayOfBirth;
+            if (diffMonths == 0) {
+                diffDays++;
+            }
+        } else {
+            if (isEndOfMonth(calendarBirth)) {
+                if (isEndOfMonth(calendarNow)) {
+                    diffMonths = getMonthsOfAge(calendarBirth, calendarNow);
+                    diffDays = 0;
+                } else {
+                    calendarNow.add(Calendar.MONTH, -1);
+                    diffMonths = getMonthsOfAge(calendarBirth, calendarNow);
+                    diffDays = dayOfNow + 1;
+                }
+            } else {
+                if (isEndOfMonth(calendarNow)) {
+                    diffMonths = getMonthsOfAge(calendarBirth, calendarNow);
+                    diffDays = 0;
+                } else {
+                    calendarNow.add(Calendar.MONTH, -1); // last month
+                    diffMonths = getMonthsOfAge(calendarBirth, calendarNow);
 
-		// Calculate the month without considering the year, so adjust it.
-		diffYears = diffMonths / 12;
-		diffMonths = diffMonths % 12;
+                    // Get the latest one in last month
+                    int maxDayOfLastMonth = calendarNow
+                            .getActualMaximum(Calendar.DAY_OF_MONTH);
+                    if (maxDayOfLastMonth > dayOfBirth) {
+                        diffDays = maxDayOfLastMonth - dayOfBirth + dayOfNow;
+                    } else {
+                        diffDays = dayOfNow;
+                    }
+                }
+            }
+        }
 
-		return new int[] { diffYears, diffMonths, diffDays };
-	}
+        // Calculate the month without considering the year, so adjust it.
+        diffYears = diffMonths / 12;
+        diffMonths = diffMonths % 12;
 
-	/**
-	 * Get month number of an age.
-	 * 
-	 * @param calendarBirth
-	 * @param calendarNow
-	 * @return
-	 */
-	public static int getMonthsOfAge(Calendar calendarBirth,
-			Calendar calendarNow) {
-		return (calendarNow.get(Calendar.YEAR) - calendarBirth
-				.get(Calendar.YEAR))
-				* 12
-				+ calendarNow.get(Calendar.MONTH)
-				- calendarBirth.get(Calendar.MONTH);
-	}
+        return new int[]{diffYears, diffMonths, diffDays};
+    }
 
-	/**
-	 * If it's the end of a month.
-	 * 
-	 * @param calendar
-	 * @return
-	 */
-	public static boolean isEndOfMonth(Calendar calendar) {
-		int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
-		if (dayOfMonth == calendar.getActualMaximum(Calendar.DAY_OF_MONTH))
-			return true;
-		return false;
-	}
+    /**
+     * Get month number of an age.
+     *
+     * @param calendarBirth
+     * @param calendarNow
+     * @return
+     */
+    public static int getMonthsOfAge(Calendar calendarBirth,
+                                     Calendar calendarNow) {
+        return (calendarNow.get(Calendar.YEAR) - calendarBirth
+                .get(Calendar.YEAR))
+                * 12
+                + calendarNow.get(Calendar.MONTH)
+                - calendarBirth.get(Calendar.MONTH);
+    }
+
+    /**
+     * If it's the end of a month.
+     *
+     * @param calendar
+     * @return
+     */
+    public static boolean isEndOfMonth(Calendar calendar) {
+        int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+        if (dayOfMonth == calendar.getActualMaximum(Calendar.DAY_OF_MONTH))
+            return true;
+        return false;
+    }
 }

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
  * Copyright (C) 2008 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +15,21 @@
  -->
 
 <resources>
-    <string-array name="named_days_string_values">
+    <string-array name="upper_named_dates_string_values">
+        <item>Today</item>
+        <item>Yesterday</item>
+        <item>The day before yesterday</item>
+        <item>The bigger day before yesterday</item>
+    </string-array>
+
+    <string-array name="lower_named_dates_string_values">
+        <item>today</item>
+        <item>yesterday</item>
+        <item>the day before yesterday</item>
+        <item>the bigger day before yesterday</item>
+    </string-array>
+
+    <string-array name="named_dates_string_values">
         <item>@string/today</item>
         <item>@string/yesterday</item>
         <item>the day before yesterday</item>
@@ -24,23 +37,23 @@
     </string-array>
 
     <string-array name="days_in_week_string_values">
+        <item>Sunday</item>
         <item>Monday</item>
         <item>Tuesday</item>
         <item>Wednesday</item>
         <item>Thursday</item>
         <item>Friday</item>
         <item>Saturday</item>
-        <item>Sunday</item>
     </string-array>
 
     <string-array name="days_in_last_week_string_values">
+        <item>Last Sunday</item>
         <item>Last Monday</item>
         <item>Last Tuesday</item>
         <item>Last Wednesday</item>
         <item>Last Thursday</item>
         <item>Last Friday</item>
         <item>Last Saturday</item>
-        <item>Last Sunday</item>
     </string-array>
 
     <integer-array name="hour_indexs" translatable="false">
@@ -66,6 +79,56 @@
     <string-array name="venue_types_string_values">
         <item>In</item>
         <item>At</item>
+    </string-array>
+
+	<!-- [Date Event Venue Person], each number means the number of each part, and 9 means that the number is not 0 nor in the others number which exist in the list. -->
+    <integer-array name="rule_indexes" translatable="false">
+        <item>0x1000</item>
+        <item>0x1100</item>
+        <item>0x1010</item>
+        <item>0x1001</item>
+        <item>0x1002</item>
+        <item>0x1003</item>
+        <item>0x100F</item>
+        <item>0x1110</item>
+        <item>0x1101</item>
+        <item>0x1102</item>
+        <item>0x1103</item>
+        <item>0x110F</item>
+        <item>0x1011</item>
+        <item>0x1012</item>
+        <item>0x1013</item>
+        <item>0x101F</item>
+        <item>0x1111</item>
+        <item>0x1112</item>
+        <item>0x1113</item>
+        <item>0x111F</item>
+    </integer-array>
+
+    <integer-array name="date_rules_masks">
+        <item>0x1000</item>
+        <item>0x1000</item>
+        <item>0x1FFF</item>
+        <item>0x1FFF</item>
+    </integer-array>
+
+    <string-array name="date_rules">
+        <item>[UPPER-NAMED-DATE] [TIME] ([DATE])</item>
+        <item>[DATE]</item>
+        <item>on [LOWER-NAMED-DATE] [TIME] ([DATE])</item>
+        <item>on [DATE]</item>
+    </string-array>
+
+    <string-array name="venue_rules">
+        <item>1010:At [VENUS]</item>
+        <item>1010:In [CITY]</item>
+        <item>9919:at [VENUS]</item>
+        <item>9919:in [CITY]</item>
+    </string-array>
+
+    <string-array name="sentence_rules">
+        <item>1000:[DATE-PIECE]</item>
+        <item>1010:[VENUE-PIECE] [DATE-PIECE]</item>
     </string-array>
 
 </resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="named_dates_string_values">
+        <item>今天</item>
+        <item>昨天</item>
+        <item>前天</item>
+        <item>大前天</item>
+    </string-array>
+
+    <string-array name="date_rules">
+        <item>1999:[NAMED-DATE][TIME]（[DATE]）</item>
+        <item>1999:[DATE]</item>
+    </string-array>
+
+    <string-array name="venue_rules">
+        <item>9919:在[VENUS]</item>
+        <item>9919:在[CITY]</item>
+    </string-array>
+
+    <string-array name="sentence_rules">
+        <item>1000:[DATE-PIECE]</item>
+        <item>1010:[DATE-PIECE]，[VENUE-PIECE]</item>
+    </string-array>
+
+</resources>

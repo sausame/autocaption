@@ -6,80 +6,92 @@
 
     <!-- Date & Time -->
     <string name="date_time">DateTime</string>
-    
+
     <!-- Event -->
     <string name="event">Event</string>
-    
+
     <!-- Venue -->
     <string name="venue">Venue</string>
     <string name="city_type">City</string>
     <string name="location_type">Location</string>
-    
+
     <!-- Persons -->
     <string name="persons">Persons</string>
     <string name="persons_hint">Name1; Name2; Name3</string>
-    
+
     <!-- Action -->
     <string name="submit">Submit</string>
 
-    <!-- Sentences -->
-    <string name="sentence_1_label">Sentence 1: </string>
-    <string name="sentence_1_hint">Date and Time only</string>
-	<string name="sentence_1"><xliff:g id="brief_date">%1$s</xliff:g><xliff:g id="brief_date">%2$s</xliff:g><xliff:g id="brief_date">%3$s</xliff:g></string>
-
-    <string name="sentence_2_label">Sentence 2: </string>
-    <string name="sentence_2_hint">All</string>
-    
-	<!-- Date -->
+    <!-- Date -->
     <string name="today">Today</string>
     <string name="yesterday">Yesterday</string>
 
-	<!-- Date Format -->
-	<!-- 1. BriefDate, 2. Time. 3. Date -->
-	<string name="date_piece">
-		<xliff:g id="brief_date">%1$s</xliff:g>
-		<xliff:g id="brief_date">%2$s</xliff:g>
-		<xliff:g id="brief_date">%3$s</xliff:g>
-	</string>
+    <!-- Date Format -->
+    <!-- 1. BriefDate, 2. Time. 3. Date -->
+	<string name="date_piece_with_brief_date"><xliff:g id="brief_date">%1$s</xliff:g> <xliff:g id="brief_date">%2$s</xliff:g> (<xliff:g id="brief_date">%3$s</xliff:g>)</string>
+    <!-- 1. Date -->
+	<string name="date_piece"><xliff:g id="brief_date">%1$s</xliff:g></string>
 
-	<!-- Birthday -->
+    <!-- Birthday -->
     <plurals name="day_age">
         <item quantity="one">one day</item>
-        <item quantity="other"><xliff:g id="number">%1$s</xliff:g> days</item>
+        <item quantity="other">
+            <xliff:g id="number">%1$s</xliff:g>
+            days
+        </item>
     </plurals>
 
     <plurals name="week_age">
         <item quantity="one">one week</item>
-        <item quantity="other"><xliff:g id="number">%1$s</xliff:g> weeks</item>
+        <item quantity="other">
+            <xliff:g id="number">%1$s</xliff:g>
+            weeks
+        </item>
     </plurals>
 
     <plurals name="month_age">
         <item quantity="one">one month</item>
-        <item quantity="other"><xliff:g id="number">%1$s</xliff:g> months</item>
+        <item quantity="other">
+            <xliff:g id="number">%1$s</xliff:g>
+            months
+        </item>
     </plurals>
 
     <plurals name="year_age">
         <item quantity="one">one year</item>
-        <item quantity="other"><xliff:g id="number">%1$s</xliff:g> years</item>
+        <item quantity="other">
+            <xliff:g id="number">%1$s</xliff:g>
+            years
+        </item>
     </plurals>
 
-	<!-- Each Person -->
-	<string name="each_person_piece"><xliff:g id="name">%1$s</xliff:g>(<xliff:g id="birthday">%2$s</xliff:g>)</string>
+    <!-- Each Person -->
+    <string name="each_person_piece"><xliff:g id="name">%1$s</xliff:g>(<xliff:g id="birthday">%2$s</xliff:g>)</string>
 
-	<!-- Persons -->
-	<string name="one_person_piece"><xliff:g id="person_1">%1$s</xliff:g></string>
-	<string name="two_person_piece"><xliff:g id="person_1">%1$s</xliff:g> and <xliff:g id="person_2">%2$s</xliff:g></string>
-	<string name="three_person_piece"><xliff:g id="person_1">%1$s</xliff:g>, <xliff:g id="person_2">%2$s</xliff:g> and <xliff:g id="person_3">%3$s</xliff:g></string>
-	<string name="other_person_piece"><xliff:g id="person_1">%1$s</xliff:g>, <xliff:g id="person_2">%2$s</xliff:g>, <xliff:g id="person_3">%3$s</xliff:g>...</string>
+    <!-- Persons -->
+    <string name="one_person_piece"><xliff:g id="person_1">%1$s</xliff:g></string>
+    <string name="two_person_piece"><xliff:g id="person_1">%1$s</xliff:g> and <xliff:g id="person_2">%2$s</xliff:g></string>
+    <string name="three_person_piece"><xliff:g id="person_1">%1$s</xliff:g>, <xliff:g id="person_2">%2$s</xliff:g> and <xliff:g id="person_3">%3$s</xliff:g></string>
+    <string name="other_person_piece"><xliff:g id="person_1">%1$s</xliff:g>, <xliff:g id="person_2">%2$s</xliff:g>, <xliff:g id="person_3">%3$s</xliff:g>...</string>
 
     <!-- Sentences -->
     <string name="sentence_date_only_label">Sentence: Date and Time only</string>
-	<string name="sentence_date_only"><xliff:g id="date">%1$s</xliff:g></string>
+    <string name="sentence_date_only"><xliff:g id="date">%1$s</xliff:g></string>
 
     <string name="sentence_date_event_label">Sentence: Date and Event</string>
-	<string name="sentence_date_event"><xliff:g id="date">%1$s</xliff:g> on <xliff:g id="date">%1$s</xliff:g></string>
+    <string name="sentence_date_event"><xliff:g id="event">%1$s</xliff:g> on <xliff:g id="date">%2$s</xliff:g></string>
+
+    <string name="sentence_date_venue_label">Sentence: Date and Venue</string>
+    <string name="sentence_date_venue"><xliff:g id="venue">%1$s</xliff:g> on <xliff:g id="date">%2$s</xliff:g></string>
+
+    <string name="sentence_date_event_venue_label">Sentence: Date, Event, Venue</string>
+    <string name="sentence_date_event_venue"><xliff:g id="event">%1$s</xliff:g><xliff:g id="venue">%1$s</xliff:g> on <xliff:g id="date">%2$s</xliff:g></string>
+
+    <string name="sentence_date_person_label">Sentence: Date and Person</string>
+    <string name="sentence_date_person"><xliff:g id="person">%1$s</xliff:g> on <xliff:g id="date">%2$s</xliff:g></string>
+
 
     <string name="sentence_2_label">Sentence 2: </string>
     <string name="sentence_2_hint">All</string>
- 
+
 </resources>
