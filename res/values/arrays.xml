@@ -163,6 +163,10 @@
 
     <!-- Person piece -->
     <integer-array name="person_rules_masks">
+        <item>0x1001</item>
+        <item>0x1002</item>
+        <item>0x1003</item>
+        <item>0x100F</item>
         <item>0xFFF1</item>
         <item>0xFFF2</item>
         <item>0xFFF3</item>
@@ -175,24 +179,58 @@
         <item>0x110</item>
         <item>0x111</item>
         <item>0x111</item>
+        <item>0x100</item>
+        <item>0x110</item>
+        <item>0x111</item>
+        <item>0x111</item>
     </integer-array>
 
     <string-array name="person_rules">
-        <item>[PERSON1]</item>
-        <item>[PERSON1] and [PERSON2]</item>
-        <item>[PERSON1], [PERSON2] and [PERSON3]</item>
-        <item>[PERSON1], [PERSON2], [PERSON3] &#8230;</item>
+        <item>With [PERSON1]</item>
+        <item>With [PERSON1] and [PERSON2]</item>
+        <item>With [PERSON1], [PERSON2] and [PERSON3]</item>
+        <item>With [PERSON1], [PERSON2], [PERSON3] &#8230;</item>
+        <item>With [PERSON1]</item>
+        <item>with [PERSON1] and [PERSON2]</item>
+        <item>with [PERSON1], [PERSON2] and [PERSON3]</item>
+        <item>with [PERSON1], [PERSON2], [PERSON3] &#8230;</item>
     </string-array>
 
     <!-- Sentence Rules -->
     <integer-array name="sentence_rules_masks">
         <item>0x1000</item>
+        <item>0x1100</item>
         <item>0x1010</item>
+
+        <item>0x100F</item>
+
+        <item>0x1110</item>
+        <item>0x1101</item>
+        <item>0x110F</item>
+
+        <item>0x1011</item>
+        <item>0x101F</item>
+
+        <item>0x1111</item>
+        <item>0x111F</item>
     </integer-array>
 
     <string-array name="sentence_rules">
         <item>[DATE-PIECE]</item>
         <item>[VENUE-PIECE] [DATE-PIECE]</item>
+        <item>[EVENT-PIECE] [DATE-PIECE]</item>
+
+        <item>[PERSON-PIECE] [DATE-PIECE]</item>
+
+        <item>[EVENT-PIECE] [VENUE-PIECE] [DATE-PIECE]</item>
+        <item>[PERSON-PIECE] [EVENT-PIECE] [DATE-PIECE]</item>
+        <item>[EVENT-PIECE] [PERSON-PIECE] [DATE-PIECE]</item>
+
+        <item>[PERSON-PIECE] [VENUE-PIECE] [DATE-PIECE]</item>
+        <item>[VENUE-PIECE] [PERSON-PIECE] [DATE-PIECE]</item>
+
+        <item>[PERSON-PIECE] [EVENT-PIECE] [VENUE-PIECE] [DATE-PIECE]</item>
+        <item>[EVENT-PIECE] [VENUE-PIECE] [PERSON-PIECE] [DATE-PIECE]</item>
     </string-array>
 
 </resources>

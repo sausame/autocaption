@@ -6,45 +6,60 @@ import android.text.TextUtils;
 
 public class SimpleResources {
 
-    public static String getStringValue(Context ctx, int arrayResId, int index) {
-        String[] values = ctx.getResources().getStringArray(arrayResId);
-        if (index >= 0 && index < values.length && !TextUtils.isEmpty(values[index])) {
-            return values[index];
-        }
+	public static String getStringValue(Context ctx, int arrayResId, int index) {
+		String[] values = ctx.getResources().getStringArray(arrayResId);
+		if (index >= 0 && index < values.length
+				&& !TextUtils.isEmpty(values[index])) {
+			return values[index];
+		}
 
-        return null;
-    }
+		return null;
+	}
 
-    public static int getIndexByValue(Context ctx, int arrayResId, int value) {
-        int[] values = ctx.getResources().getIntArray(arrayResId);
+	public static int getIndexByValue(Context ctx, int arrayResId, int value) {
+		int[] values = ctx.getResources().getIntArray(arrayResId);
 
-        for (int index = 0; index < values.length; index++) {
-            if (value == values[index]) {
-                return index;
-            }
-        }
+		for (int index = 0; index < values.length; index++) {
+			if (value == values[index]) {
+				return index;
+			}
+		}
 
-        return -1;
-    }
+		return -1;
+	}
 
-    public static int getMaxIndexLessThanValue(Context ctx, int arrayResId, int value) {
-        int[] values = ctx.getResources().getIntArray(arrayResId);
+	public static int getMaxIndexLessThanValue(Context ctx, int arrayResId,
+			int value) {
+		int[] values = ctx.getResources().getIntArray(arrayResId);
 
-        for (int index = 0; index < values.length; index++) {
-            if (value <= values[index]) {
-                return index;
-            }
-        }
+		for (int index = 0; index < values.length; index++) {
+			if (value <= values[index]) {
+				return index;
+			}
+		}
 
-        return -1;
-    }
+		return -1;
+	}
 
-    public static int[] getIntArray(Context ctx, int arrayResId) {
-        return ctx.getResources().getIntArray(arrayResId);
-    }
+	public static int getIndexByMaskValue(Context ctx, int arrayResId,
+			int maskValue) {
+		int[] values = ctx.getResources().getIntArray(arrayResId);
 
-    public static Resources getResources(Context ctx) {
-        return ctx.getResources();
-    }
+		for (int index = 0; index < values.length; index++) {
+			if (maskValue == (maskValue & values[index])) {
+				return index;
+			}
+		}
+
+		return -1;
+	}
+
+	public static int[] getIntArray(Context ctx, int arrayResId) {
+		return ctx.getResources().getIntArray(arrayResId);
+	}
+
+	public static Resources getResources(Context ctx) {
+		return ctx.getResources();
+	}
 
 }

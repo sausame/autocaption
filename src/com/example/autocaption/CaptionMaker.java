@@ -336,7 +336,7 @@ public class CaptionMaker {
 	}
 
 	private String generate() {
-		int index = SimpleResources.getIndexByValue(mCtx,
+		int index = SimpleResources.getIndexByMaskValue(mCtx,
 				R.array.sentence_rules_masks, getRuleId());
 
 		if (index >= 0) {
