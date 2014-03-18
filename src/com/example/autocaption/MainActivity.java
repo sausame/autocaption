@@ -155,10 +155,10 @@ public class MainActivity extends Activity {
     protected void submit() {
         String event = ((EditText) this.findViewById(R.id.event)).getText()
                 .toString();
-        Venue venue = new Venue();
-        venue.type = ((RadioGroup) this.findViewById(R.id.venue_type_radio))
+        Place place = new Place();
+        place.type = ((RadioGroup) this.findViewById(R.id.place_type_radio))
                 .getCheckedRadioButtonId();
-        venue.value = ((EditText) this.findViewById(R.id.venue)).getText()
+        place.value = ((EditText) this.findViewById(R.id.place)).getText()
                 .toString();
 
         String personNameStr = ((EditText) this.findViewById(R.id.persons))
@@ -175,12 +175,11 @@ public class MainActivity extends Activity {
         }
 
         String sentence1 = AutoCaption.generateSentenceWithDateOnly(this, mDate);
-        String sentence2 = AutoCaption.generateSentenceWithDateEventVenuePerson(this, mDate, event, venue,
-                persons);
+        String sentence2 = null;
 
         Log.v("Date: " + mDate);
         Log.v("Event: " + event);
-        Log.v("Venue: " + venue.type + ", " + venue.value);
+        Log.v("Place: " + place.type + ", " + place.value);
         Log.v("Person: " + personNameStr);
 
         mSentence1TextView.setText(sentence1);

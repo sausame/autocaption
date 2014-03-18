@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
+<!--
  * Copyright (C) 2008 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,30 +13,28 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- -->
+-->
 
 <resources>
+
     <string-array name="upper_named_dates_string_values">
         <item>Today</item>
         <item>Yesterday</item>
         <item>The day before yesterday</item>
         <item>The bigger day before yesterday</item>
     </string-array>
-
     <string-array name="lower_named_dates_string_values">
         <item>today</item>
         <item>yesterday</item>
         <item>the day before yesterday</item>
         <item>the bigger day before yesterday</item>
     </string-array>
-
     <string-array name="named_dates_string_values">
         <item>@string/today</item>
         <item>@string/yesterday</item>
         <item>the day before yesterday</item>
         <item>the bigger day before yesterday</item>
     </string-array>
-
     <string-array name="days_in_week_string_values">
         <item>Sunday</item>
         <item>Monday</item>
@@ -45,7 +44,6 @@
         <item>Friday</item>
         <item>Saturday</item>
     </string-array>
-
     <string-array name="days_in_last_week_string_values">
         <item>Last Sunday</item>
         <item>Last Monday</item>
@@ -76,12 +74,7 @@
         <item>Night</item>
     </string-array>
 
-    <string-array name="venue_types_string_values">
-        <item>In</item>
-        <item>At</item>
-    </string-array>
-
-	<!-- [Date Event Venue Person], each number means the number of each part, and 9 means that the number is not 0 nor in the others number which exist in the list. -->
+    <!-- [Date Event Place Person], each byte means the number of each piece, and F means that the number is not 0 nor in the others number which exist in the list. -->
     <integer-array name="rule_ids" translatable="false">
         <item>0x1000</item>
         <item>0x1100</item>
@@ -105,6 +98,10 @@
         <item>0x111F</item>
     </integer-array>
 
+    <!-- Each piece has three arraies, masks, fields and rules, and their lengths should be same. -->
+
+
+    <!-- Date piece -->
     <integer-array name="date_rules_masks">
         <item>0x1000</item>
         <item>0x1000</item>
@@ -112,7 +109,7 @@
         <item>0x1FFF</item>
     </integer-array>
 
-	<!-- Each byte means one of [NAMED-DATE] [UPPER-NAMED-DATE] [LOWER-NAMED-DATE] [DATE] [TIME] from upper to lower -->
+    <!-- Each byte means one of [NAMED-DATE] [UPPER-NAMED-DATE] [LOWER-NAMED-DATE] [DATE] [TIME] from upper to lower -->
     <integer-array name="date_rules_fields">
         <item>0x01011</item>
         <item>0x00010</item>
@@ -127,13 +124,67 @@
         <item>on [DATE]</item>
     </string-array>
 
-    <string-array name="venue_rules">
-        <item>1010:At [VENUS]</item>
-        <item>1010:In [CITY]</item>
-        <item>9919:at [VENUS]</item>
-        <item>9919:in [CITY]</item>
+    <!-- Event piece -->
+    <integer-array name="event_rules_masks">
+        <item>0x0100</item>
+    </integer-array>
+
+    <!-- Each byte means one of [EVENT] from upper to lower -->
+    <integer-array name="event_rules_fields">
+        <item>0x1</item>
+    </integer-array>
+
+    <string-array name="event_rules">
+        <item>[EVENT]</item>
     </string-array>
 
+    <!-- Place piece -->
+    <integer-array name="place_rules_masks">
+        <item>0x1010</item>
+        <item>0x1010</item>
+        <item>0xFF1F</item>
+        <item>0xFF1F</item>
+    </integer-array>
+
+    <!-- Each byte means one of [VENUS], [CITY] from upper to lower -->
+    <integer-array name="place_rules_fields">
+        <item>0x10</item>
+        <item>0x01</item>
+        <item>0x10</item>
+        <item>0x01</item>
+    </integer-array>
+
+    <string-array name="place_rules">
+        <item>At [VENUS]</item>
+        <item>In [CITY]</item>
+        <item>at [VENUS]</item>
+        <item>in [CITY]</item>
+    </string-array>
+
+    <!-- Person piece -->
+    <integer-array name="person_rules_masks">
+        <item>0xFFF1</item>
+        <item>0xFFF2</item>
+        <item>0xFFF3</item>
+        <item>0xFFFF</item>
+    </integer-array>
+
+    <!-- Each byte means one of [PERSON1], [PERSON2], [PERSON3] from upper to lower -->
+    <integer-array name="person_rules_fields">
+        <item>0x100</item>
+        <item>0x110</item>
+        <item>0x111</item>
+        <item>0x111</item>
+    </integer-array>
+
+    <string-array name="person_rules">
+        <item>[PERSON1]</item>
+        <item>[PERSON1] and [PERSON2]</item>
+        <item>[PERSON1], [PERSON2] and [PERSON3]</item>
+        <item>[PERSON1], [PERSON2], [PERSON3] &#8230;</item>
+    </string-array>
+
+    <!-- Sentence Rules -->
     <integer-array name="sentence_rules_masks">
         <item>0x1000</item>
         <item>0x1010</item>

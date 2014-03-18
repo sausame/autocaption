@@ -10,10 +10,10 @@
     <!-- Event -->
     <string name="event">Event</string>
 
-    <!-- Venue -->
-    <string name="venue">Venue</string>
+    <!-- Place -->
+    <string name="place">Place</string>
     <string name="city_type">City</string>
-    <string name="location_type">Location</string>
+    <string name="venue_type">Venue</string>
 
     <!-- Persons -->
     <string name="persons">Persons</string>

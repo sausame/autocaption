@@ -19,35 +19,31 @@ public class CaptionMaker {
 
 	public final static int DATE_FIELD_MASK = 0xF000;
 	public final static int EVENT_FIELD_MASK = 0x0F00;
-	public final static int VENUE_FIELD_MASK = 0x00F0;
+	public final static int PLACE_FIELD_MASK = 0x00F0;
 	public final static int PERSON_FIELD_MASK = 0x000F;
 
 	public final static String DATE_PIECE = "[DATE-PIECE]";
 	public final static String EVENT_PIECE = "[EVENT-PIECE]";
-	public final static String VENUE_PIECE = "[VENUE-PIECE]";
-	public final static String PERSON_piece = "[PERSON-PIECE]";
+	public final static String PLACE_PIECE = "[PLACE-PIECE]";
+	public final static String PERSON_PIECE = "[PERSON-PIECE]";
 
-	public final static String NAMED_DATE = "[NAMED-DATE]";
-	public final static String UPPER_NAMED_DATE = "[UPPER-NAMED-DATE]";
-	public final static String LOWER_NAMED_DATE = "[LOWER-NAMED-DATE]";
-	public final static String DATE = "[DATE]";
-	public final static String TIME = "[TIME]";
-
-	public final static String VENUS = "[VENUS]";
-	public final static String CITY = "[CITY]";
+	public final static String DATE_FIELDS[] = { "[NAMED-DATE]",
+			"[UPPER-NAMED-DATE]", "[LOWER-NAMED-DATE]", "[DATE]", "[TIME]" };
+	public final static String EVENT_FIELDS[] = { "[EVENT]" };
+	public final static String PLACE_FIELDS[] = { "[VENUS]", "[CITY]" };
+	public final static String PERSON_FIELDS[] = { "[PERSON1]", "[PERSON2]",
+			"[PERSON3]" };
 
 	private int mRuleId;
 
 	private Date mDate;
 	private String mEvent;
-	private Venue mVenue;
+	private Place mPlace;
 	private Person[] mPersons;
 
 	private String mDateTimeString;
 	private String mEventString;
-	private String mVenueString;
-	private String mVenueValueString;
-	private String[] mPersonStrings;
+	private String mPlaceString;
 	private String mPersonsString;
 
 	private Context mCtx;
@@ -73,8 +69,8 @@ public class CaptionMaker {
 		return this;
 	}
 
-	private CaptionMaker setVenue(Venue venue) {
-		mVenue = venue;
+	private CaptionMaker setPlace(Place place) {
+		mPlace = place;
 		return this;
 	}
 
@@ -94,7 +90,7 @@ public class CaptionMaker {
 			mRuleId |= EVENT_FIELD_DEFAULT;
 		}
 
-		if (mVenue != null && !TextUtils.isEmpty(mVenue.value)) {
+		if (mPlace != null && !TextUtils.isEmpty(mPlace.value)) {
 			mRuleId |= VENUE_FIELD_DEFAULT;
 		}
 
@@ -114,15 +110,16 @@ public class CaptionMaker {
 		return mRuleId;
 	}
 
-	private String generatePiece(int[] resIds, String[] values) {
+	private String generatePiece(int[] resIds, final String[] fields,
+			String[] values) {
 		int[] rulesMasks = SimpleResources.getIntArray(mCtx,
 				resIds[RULES_MASKS_ID]);
-		int[] fields = SimpleResources.getIntArray(mCtx,
+		int[] fieldIndexs = SimpleResources.getIntArray(mCtx,
 				resIds[DATE_RULES_FIELDS]);
 
 		for (int ruleIndex = 0; ruleIndex < rulesMasks.length; ruleIndex++) {
 			if (mRuleId == (mRuleId & rulesMasks[ruleIndex])) {
-				int field = fields[ruleIndex];
+				int field = fieldIndexs[ruleIndex];
 				int fieldMask = 0xf;
 				boolean found = true;
 
@@ -141,10 +138,8 @@ public class CaptionMaker {
 							resIds[RULES], ruleIndex);
 					for (int fieldIndex = values.length - 1; fieldIndex >= 0; fieldIndex--) {
 						if (0 != (field & fieldMask)) {
-							if (TextUtils.isEmpty(values[fieldIndex])) {
-								found = false;
-								break;
-							}
+							piece = piece.replace(fields[fieldIndex],
+									values[fieldIndex]);
 						}
 
 						fieldMask <<= 4;
@@ -229,16 +224,79 @@ public class CaptionMaker {
 				generateLowerNameDate(), generateUpperNameDate(),
 				generateDate(), generateTime() };
 
-		mDateTimeString = generatePiece(resIds, values);
+		mDateTimeString = generatePiece(resIds, DATE_FIELDS, values);
 	}
 
 	private void generateEvent() {
+		final int resIds[] = { R.array.event_rules_masks,
+				R.array.event_rules_fields, R.array.event_rules };
+		String values[] = new String[] { mEvent };
+
+		mEventString = generatePiece(resIds, EVENT_FIELDS, values);
 	}
 
-	private void generateVenue() {
+	private String generateVenue() {
+		if (Place.VENUE == mPlace.type) {
+			return mPlace.value;
+		}
+
+		return null;
+	}
+
+	private String generateCity() {
+		if (Place.CITY == mPlace.type) {
+			return mPlace.value;
+		}
+
+		return null;
+	}
+
+	private void generatePlace() {
+		final int resIds[] = { R.array.place_rules_masks,
+				R.array.place_rules_fields, R.array.place_rules };
+		String values[] = new String[] { generateVenue(), generateCity() };
+
+		mPlaceString = generatePiece(resIds, PLACE_FIELDS, values);
+	}
+
+	private String generateBirthdayString(Date birthday) {
+		int[] counts = SimpleDateTime.getNeturalAge(birthday);
+		final int[] resIds = { R.plurals.year_age, R.plurals.month_age,
+				R.plurals.day_age };
+
+		if (counts[0] > AGE_MAX) {
+			return null;
+		}
+
+		for (int index = 0; index < resIds.length; index++) {
+			if (counts[index] > 0) {
+				return SimpleResources.getResources(mCtx).getQuantityString(
+						resIds[index], counts[index], counts[index]);
+			}
+		}
+
+		return null;
+	}
+
+	private String generatePersonString(Person person) {
+		String birthdayString = generateBirthdayString(person.birthday);
+		String nameString = person.name;
+
+		return SimpleResources.getResources(mCtx).getString(
+				R.string.each_person_piece, nameString, birthdayString);
 	}
 
 	private void generatePersons() {
+		int num = mPersons.length;
+		final int resIds[] = { R.array.person_rules_masks,
+				R.array.person_rules_fields, R.array.person_rules };
+
+		String values[] = new String[num];
+		for (int index = 0; index < MAX_PERSON && index < num; index++) {
+			values[index] = generatePersonString(mPersons[index]);
+		}
+
+		mPlaceString = generatePiece(resIds, PERSON_FIELDS, values);
 	}
 
 	private String implementDate(String sentence) {
@@ -256,16 +314,16 @@ public class CaptionMaker {
 		}
 
 		generateEvent();
-		return sentence.replace(DATE_PIECE, mEventString);
+		return sentence.replace(EVENT_PIECE, mEventString);
 	}
 
-	private String implementVenue(String sentence) {
-		if (0 == (VENUE_FIELD_MASK & mRuleId)) {
+	private String implementPlace(String sentence) {
+		if (0 == (PLACE_FIELD_MASK & mRuleId)) {
 			return sentence;
 		}
 
-		generateVenue();
-		return sentence.replace(DATE_PIECE, mVenueString);
+		generatePlace();
+		return sentence.replace(PLACE_PIECE, mPlaceString);
 	}
 
 	private String implementPersons(String sentence) {
@@ -274,7 +332,7 @@ public class CaptionMaker {
 		}
 
 		generatePersons();
-		return sentence.replace(DATE_PIECE, mPersonsString);
+		return sentence.replace(PERSON_PIECE, mPersonsString);
 	}
 
 	private String generate() {
@@ -284,7 +342,7 @@ public class CaptionMaker {
 		if (index >= 0) {
 			String sentence = SimpleResources.getStringValue(mCtx,
 					R.array.sentence_rules, index);
-			return implementPersons(implementVenue(implementEvent(implementDate(sentence))));
+			return implementPersons(implementPlace(implementEvent(implementDate(sentence))));
 		}
 
 		Log.e(TAG, "Do NOT support " + Integer.toHexString(mRuleId));
@@ -292,9 +350,9 @@ public class CaptionMaker {
 	}
 
 	public static String generate(Context ctx, Date date, String event,
-			Venue venue, Person[] persons) {
+			Place place, Person[] persons) {
 		return (new CaptionMaker(ctx)).setDate(date).setEvent(event)
-				.setVenue(venue).setPersons(persons).generate();
+				.setPlace(place).setPersons(persons).generate();
 	}
 
 }

@@ -13,13 +13,13 @@ public class AutoCaption {
 
     private Date mDate;
     private String mEvent;
-    private Venue mVenue;
+    private Place mPlace;
     private Person[] mPersons;
 
     private String mDateTimeString;
     private String mEventString;
-    private String mVenueTypeString;
-    private String mVenueValueString;
+    private String mPlaceTypeString;
+    private String mPlaceValueString;
     private String[] mPersonStrings;
     private String mPersonsString;
 
@@ -42,8 +42,8 @@ public class AutoCaption {
         return this;
     }
 
-    private AutoCaption setVenue(Venue venue) {
-        mVenue = venue;
+    private AutoCaption setPlace(Place place) {
+        mPlace = place;
         return this;
     }
 
@@ -115,9 +115,9 @@ public class AutoCaption {
         mEventString = mEvent;
     }
 
-    private void generateVenue() {
-        mVenueTypeString = SimpleResources.getStringValue(mCtx, R.array.venue_types_string_values, mVenue.type);
-        mVenueValueString = mVenue.value;
+    private void generatePlace() {
+        mPlaceTypeString = "";
+        mPlaceValueString = mPlace.value;
     }
 
     private String generateBirthdayString(Date birthday) {
@@ -186,12 +186,12 @@ public class AutoCaption {
 		return mDateTimeString;
     }
 
-    private String generateSentenceWithDateEventVenuePerson() {
+    private String generateSentenceWithDateEventPlacePerson() {
         String sentence;
 
         generateDateTime();
         generateEvent();
-        generateVenue();
+        generatePlace();
         generatePersons();
 
         switch (mPersons.length) {
@@ -225,10 +225,10 @@ public class AutoCaption {
         return (new AutoCaption(ctx)).setDate(date).generateSentenceWithDateOnly();
     }
 
-    public static String generateSentenceWithDateEventVenuePerson(Context ctx, Date date,
-                                                                  String event, Venue venue, Person[] persons) {
+    public static String generateSentenceWithDateEventPlacePerson(Context ctx, Date date,
+                                                                  String event, Place place, Person[] persons) {
         return (new AutoCaption(ctx)).setDate(date).setEvent(event)
-                .setVenue(venue).setPersons(persons).generateSentenceWithDateEventVenuePerson();
+                .setPlace(place).setPersons(persons).generateSentenceWithDateEventPlacePerson();
     }
 
 }
