@@ -128,7 +128,7 @@
         android:layout_weight="1"
         android:text="@string/submit" />
 
-    <!-- Sentence 1 -->
+    <!-- Sentence -->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -138,47 +138,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sentence_date_only_label" />
+            android:text="@string/sentence" />
 
         <EditText
-            android:id="@+id/sentence_1"
+            android:id="@+id/sentence"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:enabled="false"
-            android:hint="@string/sentence_date_only_label" />
-    </LinearLayout>
-
-    <!-- Sentence 2 -->
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sentence_2_label" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sentence_2_hint" />
-        </LinearLayout>
-
-        <EditText
-            android:id="@+id/sentence_2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:enabled="false"
-            android:hint="@string/sentence_2_label" />
+            android:hint="@string/sentence" />
     </LinearLayout>
 
 </LinearLayout>

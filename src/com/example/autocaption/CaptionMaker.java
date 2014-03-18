@@ -117,13 +117,19 @@ public class CaptionMaker {
 		int[] fieldIndexs = SimpleResources.getIntArray(mCtx,
 				resIds[DATE_RULES_FIELDS]);
 
+		Log.v("RuleId = " + Integer.toHexString(mRuleId));
+
 		for (int ruleIndex = 0; ruleIndex < rulesMasks.length; ruleIndex++) {
+			Log.v("NO." + ruleIndex + ": "
+					+ Integer.toHexString(rulesMasks[ruleIndex]));
 			if (mRuleId == (mRuleId & rulesMasks[ruleIndex])) {
 				int field = fieldIndexs[ruleIndex];
 				int fieldMask = 0xf;
 				boolean found = true;
 
+				Log.v("Field = " + Integer.toHexString(field));
 				for (int fieldIndex = values.length - 1; fieldIndex >= 0; fieldIndex--) {
+					Log.v("NO." + fieldIndex + ": " + values[fieldIndex]);
 					if (0 != (field & fieldMask)) {
 						if (TextUtils.isEmpty(values[fieldIndex])) {
 							found = false;
@@ -136,10 +142,13 @@ public class CaptionMaker {
 				if (found) {
 					String piece = SimpleResources.getStringValue(mCtx,
 							resIds[RULES], ruleIndex);
+					Log.v("Piece = " + piece);
+					fieldMask = 0xf;
 					for (int fieldIndex = values.length - 1; fieldIndex >= 0; fieldIndex--) {
 						if (0 != (field & fieldMask)) {
 							piece = piece.replace(fields[fieldIndex],
 									values[fieldIndex]);
+							Log.v("NO." + fieldIndex + ": " + piece);
 						}
 
 						fieldMask <<= 4;
@@ -221,7 +230,7 @@ public class CaptionMaker {
 		final int resIds[] = { R.array.date_rules_masks,
 				R.array.date_rules_fields, R.array.date_rules };
 		String values[] = new String[] { generateNameDate(),
-				generateLowerNameDate(), generateUpperNameDate(),
+				generateUpperNameDate(), generateLowerNameDate(),
 				generateDate(), generateTime() };
 
 		mDateTimeString = generatePiece(resIds, DATE_FIELDS, values);

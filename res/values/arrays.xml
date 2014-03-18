@@ -65,13 +65,13 @@
     </integer-array>
 
     <string-array name="hour_values">
-        <item>Night</item>
-        <item>Before Dawn</item>
-        <item>Morning</item>
-        <item>Noon</item>
-        <item>Afternoon</item>
-        <item>Evening</item>
-        <item>Night</item>
+        <item>night</item>
+        <item>before dawn</item>
+        <item>morning</item>
+        <item>noon</item>
+        <item>afternoon</item>
+        <item>evening</item>
+        <item>night</item>
     </string-array>
 
     <!-- [Date Event Place Person], each byte means the number of each piece, and F means that the number is not 0 nor in the others number which exist in the list. -->

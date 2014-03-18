@@ -91,7 +91,6 @@
     <string name="sentence_date_person"><xliff:g id="person">%1$s</xliff:g> on <xliff:g id="date">%2$s</xliff:g></string>
 
 
-    <string name="sentence_2_label">Sentence 2: </string>
-    <string name="sentence_2_hint">All</string>
+    <string name="sentence">Sentence:</string>
 
 </resources>
