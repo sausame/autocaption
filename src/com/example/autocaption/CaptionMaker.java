@@ -125,9 +125,10 @@ public class CaptionMaker {
 				int field = fieldIndexs[ruleIndex];
 				int fieldMask = 0xf;
 				boolean found = true;
+				int fieldIndex;
 
 				Log.v("Find Field = " + Integer.toHexString(field));
-				for (int fieldIndex = values.length - 1; fieldIndex >= 0; fieldIndex--) {
+				for (fieldIndex = values.length - 1; fieldIndex >= 0; fieldIndex--) {
 					if (0 != (field & fieldMask)) {
 						Log.v("Field NO." + fieldIndex + ": "
 								+ values[fieldIndex]);
@@ -144,7 +145,7 @@ public class CaptionMaker {
 							resIds[RULES], ruleIndex);
 					Log.v("Replace Piece = " + piece);
 					fieldMask = 0xf;
-					for (int fieldIndex = values.length - 1; fieldIndex >= 0; fieldIndex--) {
+					for (fieldIndex = values.length - 1; fieldIndex >= 0; fieldIndex--) {
 						if (0 != (field & fieldMask)) {
 							piece = piece.replace(fields[fieldIndex],
 									values[fieldIndex]);
@@ -300,12 +301,16 @@ public class CaptionMaker {
 		final int resIds[] = { R.array.person_rules_masks,
 				R.array.person_rules_fields, R.array.person_rules };
 
-		String values[] = new String[num];
-		for (int index = 0; index < MAX_PERSON && index < num; index++) {
+		int index = 0;
+		String values[] = new String[MAX_PERSON];
+		for (; index < MAX_PERSON && index < num; index++) {
 			values[index] = generatePersonString(mPersons[index]);
 		}
+		for (; index < MAX_PERSON; index++) {
+			values[index] = null;
+		}
 
-		mPlaceString = generatePiece(resIds, PERSON_FIELDS, values);
+		mPersonsString = generatePiece(resIds, PERSON_FIELDS, values);
 	}
 
 	private String implementDate(String sentence) {

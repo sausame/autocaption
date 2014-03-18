@@ -140,8 +140,12 @@
 
     <!-- Place piece -->
     <integer-array name="place_rules_masks">
-        <item>0x1010</item>
-        <item>0x1010</item>
+        <item>0xF010</item>
+        <item>0xF010</item>
+        <item>0xF011</item>
+        <item>0xF011</item>
+        <item>0xF01F</item>
+        <item>0xF01F</item>
         <item>0xFF1F</item>
         <item>0xFF1F</item>
     </integer-array>
@@ -152,9 +156,17 @@
         <item>0x01</item>
         <item>0x10</item>
         <item>0x01</item>
+        <item>0x10</item>
+        <item>0x01</item>
+        <item>0x10</item>
+        <item>0x01</item>
     </integer-array>
 
     <string-array name="place_rules">
+        <item>At [VENUS]</item>
+        <item>In [CITY]</item>
+        <item>at [VENUS]</item>
+        <item>in [CITY]</item>
         <item>At [VENUS]</item>
         <item>In [CITY]</item>
         <item>at [VENUS]</item>
