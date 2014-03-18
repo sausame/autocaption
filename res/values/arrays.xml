@@ -126,7 +126,7 @@
 
     <!-- Event piece -->
     <integer-array name="event_rules_masks">
-        <item>0x0100</item>
+        <item>0xF1FF</item>
     </integer-array>
 
     <!-- Each byte means one of [EVENT] from upper to lower -->
@@ -217,20 +217,20 @@
 
     <string-array name="sentence_rules">
         <item>[DATE-PIECE]</item>
-        <item>[VENUE-PIECE] [DATE-PIECE]</item>
         <item>[EVENT-PIECE] [DATE-PIECE]</item>
+        <item>[PLACE-PIECE] [DATE-PIECE]</item>
 
         <item>[PERSON-PIECE] [DATE-PIECE]</item>
 
-        <item>[EVENT-PIECE] [VENUE-PIECE] [DATE-PIECE]</item>
+        <item>[EVENT-PIECE] [PLACE-PIECE] [DATE-PIECE]</item>
         <item>[PERSON-PIECE] [EVENT-PIECE] [DATE-PIECE]</item>
         <item>[EVENT-PIECE] [PERSON-PIECE] [DATE-PIECE]</item>
 
-        <item>[PERSON-PIECE] [VENUE-PIECE] [DATE-PIECE]</item>
-        <item>[VENUE-PIECE] [PERSON-PIECE] [DATE-PIECE]</item>
+        <item>[PERSON-PIECE] [PLACE-PIECE] [DATE-PIECE]</item>
+        <item>[PLACE-PIECE] [PERSON-PIECE] [DATE-PIECE]</item>
 
-        <item>[PERSON-PIECE] [EVENT-PIECE] [VENUE-PIECE] [DATE-PIECE]</item>
-        <item>[EVENT-PIECE] [VENUE-PIECE] [PERSON-PIECE] [DATE-PIECE]</item>
+        <item>[PERSON-PIECE] [EVENT-PIECE] [PLACE-PIECE] [DATE-PIECE]</item>
+        <item>[EVENT-PIECE] [PLACE-PIECE] [PERSON-PIECE] [DATE-PIECE]</item>
     </string-array>
 
 </resources>

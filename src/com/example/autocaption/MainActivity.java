@@ -155,8 +155,13 @@ public class MainActivity extends Activity {
 		String event = ((EditText) this.findViewById(R.id.event)).getText()
 				.toString();
 		Place place = new Place();
-		place.type = ((RadioGroup) this.findViewById(R.id.place_type_radio))
+		int selectId = ((RadioGroup) this.findViewById(R.id.place_type_radio))
 				.getCheckedRadioButtonId();
+		if (selectId == findViewById(R.id.venue_type).getId()) {
+			place.type = Place.VENUE;
+		} else {
+			place.type = Place.CITY;
+		}
 		place.value = ((EditText) this.findViewById(R.id.place)).getText()
 				.toString();
 

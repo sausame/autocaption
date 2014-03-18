@@ -118,19 +118,19 @@ public class CaptionMaker {
 				resIds[DATE_RULES_FIELDS]);
 
 		Log.v("RuleId = " + Integer.toHexString(mRuleId));
-
 		for (int ruleIndex = 0; ruleIndex < rulesMasks.length; ruleIndex++) {
-			Log.v("NO." + ruleIndex + ": "
-					+ Integer.toHexString(rulesMasks[ruleIndex]));
 			if (mRuleId == (mRuleId & rulesMasks[ruleIndex])) {
+				Log.v("Rule NO." + ruleIndex + ": "
+						+ Integer.toHexString(rulesMasks[ruleIndex]));
 				int field = fieldIndexs[ruleIndex];
 				int fieldMask = 0xf;
 				boolean found = true;
 
-				Log.v("Field = " + Integer.toHexString(field));
+				Log.v("Find Field = " + Integer.toHexString(field));
 				for (int fieldIndex = values.length - 1; fieldIndex >= 0; fieldIndex--) {
-					Log.v("NO." + fieldIndex + ": " + values[fieldIndex]);
 					if (0 != (field & fieldMask)) {
+						Log.v("Field NO." + fieldIndex + ": "
+								+ values[fieldIndex]);
 						if (TextUtils.isEmpty(values[fieldIndex])) {
 							found = false;
 							break;
@@ -142,7 +142,7 @@ public class CaptionMaker {
 				if (found) {
 					String piece = SimpleResources.getStringValue(mCtx,
 							resIds[RULES], ruleIndex);
-					Log.v("Piece = " + piece);
+					Log.v("Replace Piece = " + piece);
 					fieldMask = 0xf;
 					for (int fieldIndex = values.length - 1; fieldIndex >= 0; fieldIndex--) {
 						if (0 != (field & fieldMask)) {
@@ -312,7 +312,7 @@ public class CaptionMaker {
 		if (0 == (DATE_FIELD_MASK & mRuleId)) {
 			return sentence;
 		}
-
+		Log.v("Sentence = " + sentence);
 		generateDateTime();
 		return sentence.replace(DATE_PIECE, mDateTimeString);
 	}
@@ -321,7 +321,7 @@ public class CaptionMaker {
 		if (0 == (EVENT_FIELD_MASK & mRuleId)) {
 			return sentence;
 		}
-
+		Log.v("Sentence = " + sentence);
 		generateEvent();
 		return sentence.replace(EVENT_PIECE, mEventString);
 	}
@@ -330,7 +330,7 @@ public class CaptionMaker {
 		if (0 == (PLACE_FIELD_MASK & mRuleId)) {
 			return sentence;
 		}
-
+		Log.v("Sentence = " + sentence);
 		generatePlace();
 		return sentence.replace(PLACE_PIECE, mPlaceString);
 	}
@@ -339,7 +339,7 @@ public class CaptionMaker {
 		if (0 == (PERSON_FIELD_MASK & mRuleId)) {
 			return sentence;
 		}
-
+		Log.v("Sentence = " + sentence);
 		generatePersons();
 		return sentence.replace(PERSON_PIECE, mPersonsString);
 	}
@@ -351,7 +351,10 @@ public class CaptionMaker {
 		if (index >= 0) {
 			String sentence = SimpleResources.getStringValue(mCtx,
 					R.array.sentence_rules, index);
-			return implementPersons(implementPlace(implementEvent(implementDate(sentence))));
+
+			sentence = implementPersons(implementPlace(implementEvent(implementDate(sentence))));
+			Log.v("Sentence = " + sentence);
+			return sentence;
 		}
 
 		Log.e(TAG, "Do NOT support " + Integer.toHexString(mRuleId));
