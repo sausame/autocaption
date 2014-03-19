@@ -27,8 +27,9 @@ public class CaptionMaker {
 	public final static String PLACE_PIECE = "[PLACE-PIECE]";
 	public final static String PERSON_PIECE = "[PERSON-PIECE]";
 
-	public final static String DATE_FIELDS[] = { "[NAMED-DATE]",
-			"[UPPER-NAMED-DATE]", "[LOWER-NAMED-DATE]", "[DATE]", "[TIME]" };
+	public final static String DATE_FIELDS[] = { "[UPPER-NAMED-DATE]",
+			"[LOWER-NAMED-DATE]", "[UPPER-WEEKLY-DATE]", "[LOWER-WEEKLY-DATE]",
+			"[DATE]", "[TIME]" };
 	public final static String EVENT_FIELDS[] = { "[EVENT]" };
 	public final static String PLACE_FIELDS[] = { "[VENUS]", "[CITY]" };
 	public final static String PERSON_FIELDS[] = { "[PERSON1]", "[PERSON2]",
@@ -163,8 +164,7 @@ public class CaptionMaker {
 		return null;
 	}
 
-	private String generateBriefDate(int namedDateResId, int daysInWeekResId,
-			int daysInLastWeekResId) {
+	private String generateNamedDate(int namedDateResId) {
 		String briefString;
 
 		// 1. Check the named days.
@@ -176,8 +176,15 @@ public class CaptionMaker {
 			return briefString;
 		}
 
-		// 2. Check if it's in this week
-		diff = SimpleDateTime.compareFirstDayInThisWeek(mDate);
+		return null;
+	}
+
+	private String generateWeeklyDate(int daysInWeekResId,
+			int daysInLastWeekResId) {
+		String briefString;
+
+		// 1. Check if it's in this week
+		int diff = SimpleDateTime.compareFirstDayInThisWeek(mDate);
 
 		briefString = SimpleResources.getStringValue(mCtx, daysInWeekResId,
 				diff);
@@ -185,7 +192,7 @@ public class CaptionMaker {
 			return briefString;
 		}
 
-		// 3. Check if it's in the last week.
+		// 2. Check if it's in the last week.
 		diff = SimpleDateTime.compareFirstDayInLastWeek(mDate);
 
 		briefString = SimpleResources.getStringValue(mCtx, daysInLastWeekResId,
@@ -194,26 +201,26 @@ public class CaptionMaker {
 			return briefString;
 		}
 
-		// 4. Others.
+		// 3. Others.
 		return null;
 	}
 
-	private String generateNameDate() {
-		return generateBriefDate(R.array.named_dates_string_values,
-				R.array.days_in_week_string_values,
-				R.array.days_in_last_week_string_values);
+	private String generateUpperNamedDate() {
+		return generateNamedDate(R.array.upper_named_dates_string_values);
 	}
 
-	private String generateLowerNameDate() {
-		return generateBriefDate(R.array.lower_named_dates_string_values,
-				R.array.days_in_week_string_values,
-				R.array.days_in_last_week_string_values);
+	private String generateLowerNamedDate() {
+		return generateNamedDate(R.array.lower_named_dates_string_values);
 	}
 
-	private String generateUpperNameDate() {
-		return generateBriefDate(R.array.upper_named_dates_string_values,
-				R.array.days_in_week_string_values,
-				R.array.days_in_last_week_string_values);
+	private String generateUpperWeeklyDate() {
+		return generateWeeklyDate(R.array.upper_days_in_week_string_values,
+				R.array.upper_days_in_last_week_string_values);
+	}
+
+	private String generateLowerWeeklyDate() {
+		return generateWeeklyDate(R.array.lower_days_in_week_string_values,
+				R.array.lower_days_in_last_week_string_values);
 	}
 
 	private String generateDate() {
@@ -230,9 +237,9 @@ public class CaptionMaker {
 	private void generateDateTime() {
 		final int resIds[] = { R.array.date_rules_masks,
 				R.array.date_rules_fields, R.array.date_rules };
-		String values[] = new String[] { generateNameDate(),
-				generateUpperNameDate(), generateLowerNameDate(),
-				generateDate(), generateTime() };
+		String values[] = new String[] { generateUpperNamedDate(),
+				generateLowerNamedDate(), generateUpperWeeklyDate(),
+				generateLowerWeeklyDate(), generateDate(), generateTime() };
 
 		mDateTimeString = generatePiece(resIds, DATE_FIELDS, values);
 	}

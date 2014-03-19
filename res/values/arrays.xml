@@ -29,13 +29,7 @@
         <item>the day before yesterday</item>
         <item>the bigger day before yesterday</item>
     </string-array>
-    <string-array name="named_dates_string_values">
-        <item>@string/today</item>
-        <item>@string/yesterday</item>
-        <item>the day before yesterday</item>
-        <item>the bigger day before yesterday</item>
-    </string-array>
-    <string-array name="days_in_week_string_values">
+    <string-array name="upper_days_in_week_string_values">
         <item>Sunday</item>
         <item>Monday</item>
         <item>Tuesday</item>
@@ -44,7 +38,16 @@
         <item>Friday</item>
         <item>Saturday</item>
     </string-array>
-    <string-array name="days_in_last_week_string_values">
+    <string-array name="lower_days_in_week_string_values">
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+    </string-array>
+    <string-array name="upper_days_in_last_week_string_values">
         <item>Last Sunday</item>
         <item>Last Monday</item>
         <item>Last Tuesday</item>
@@ -52,6 +55,15 @@
         <item>Last Thursday</item>
         <item>Last Friday</item>
         <item>Last Saturday</item>
+    </string-array>
+    <string-array name="lower_days_in_last_week_string_values">
+        <item>last Sunday</item>
+        <item>last Monday</item>
+        <item>last Tuesday</item>
+        <item>last Wednesday</item>
+        <item>last Thursday</item>
+        <item>last Friday</item>
+        <item>last Saturday</item>
     </string-array>
 
     <integer-array name="hour_indexs" translatable="false">
@@ -105,22 +117,28 @@
     <integer-array name="date_rules_masks">
         <item>0x1000</item>
         <item>0x1000</item>
+        <item>0x1000</item>
+        <item>0x1FFF</item>
         <item>0x1FFF</item>
         <item>0x1FFF</item>
     </integer-array>
 
-    <!-- Each byte means one of [NAMED-DATE] [UPPER-NAMED-DATE] [LOWER-NAMED-DATE] [DATE] [TIME] from upper to lower -->
+    <!-- Each byte means one of [UPPER-NAMED-DATE] [LOWER-NAMED-DATE] [UPPER-WEEKLY-DATE] [LOWER-WEEKLY-DATE] [DATE] [TIME] from upper to lower -->
     <integer-array name="date_rules_fields">
-        <item>0x01011</item>
-        <item>0x00010</item>
-        <item>0x00111</item>
-        <item>0x00010</item>
+        <item>0x100011</item>
+        <item>0x001011</item>
+        <item>0x000010</item>
+        <item>0x010011</item>
+        <item>0x000111</item>
+        <item>0x000010</item>
     </integer-array>
 
     <string-array name="date_rules">
         <item>[UPPER-NAMED-DATE] [TIME] ([DATE])</item>
+        <item>[UPPER-WEEKLY-DATE] [TIME] ([DATE])</item>
         <item>[DATE]</item>
-        <item>on [LOWER-NAMED-DATE] [TIME] ([DATE])</item>
+        <item>[LOWER-NAMED-DATE] [TIME] ([DATE])</item>
+        <item>on [LOWER-WEEKLY-DATE] [TIME] ([DATE])</item>
         <item>on [DATE]</item>
     </string-array>
 
@@ -213,16 +231,12 @@
         <item>0x1000</item>
         <item>0x1100</item>
         <item>0x1010</item>
-
         <item>0x100F</item>
-
         <item>0x1110</item>
         <item>0x1101</item>
         <item>0x110F</item>
-
         <item>0x1011</item>
         <item>0x101F</item>
-
         <item>0x1111</item>
         <item>0x111F</item>
     </integer-array>
@@ -231,16 +245,12 @@
         <item>[DATE-PIECE]</item>
         <item>[EVENT-PIECE] [DATE-PIECE]</item>
         <item>[PLACE-PIECE] [DATE-PIECE]</item>
-
         <item>[PERSON-PIECE] [DATE-PIECE]</item>
-
         <item>[EVENT-PIECE] [PLACE-PIECE] [DATE-PIECE]</item>
         <item>[PERSON-PIECE] [EVENT-PIECE] [DATE-PIECE]</item>
         <item>[EVENT-PIECE] [PERSON-PIECE] [DATE-PIECE]</item>
-
         <item>[PERSON-PIECE] [PLACE-PIECE] [DATE-PIECE]</item>
         <item>[PLACE-PIECE] [PERSON-PIECE] [DATE-PIECE]</item>
-
         <item>[PERSON-PIECE] [EVENT-PIECE] [PLACE-PIECE] [DATE-PIECE]</item>
         <item>[EVENT-PIECE] [PLACE-PIECE] [PERSON-PIECE] [DATE-PIECE]</item>
     </string-array>
