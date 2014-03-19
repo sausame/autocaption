@@ -118,22 +118,22 @@ public class CaptionMaker {
 		int[] fieldIndexs = SimpleResources.getIntArray(mCtx,
 				resIds[DATE_RULES_FIELDS]);
 
-		Log.v("RuleId = " + Integer.toHexString(mRuleId));
 		for (int ruleIndex = 0; ruleIndex < rulesMasks.length; ruleIndex++) {
 			if (mRuleId == (mRuleId & rulesMasks[ruleIndex])) {
-				Log.v("Rule NO." + ruleIndex + ": "
-						+ Integer.toHexString(rulesMasks[ruleIndex]));
 				int field = fieldIndexs[ruleIndex];
 				int fieldMask = 0xf;
 				boolean found = true;
 				int fieldIndex;
 
-				Log.v("Find Field = " + Integer.toHexString(field));
+				Log.v("Check NO." + ruleIndex + ": "
+						+ Integer.toHexString(rulesMasks[ruleIndex])
+						+ " (mask) " + Integer.toHexString(field)
+						+ " (fields index)");
+
 				for (fieldIndex = values.length - 1; fieldIndex >= 0; fieldIndex--) {
 					if (0 != (field & fieldMask)) {
-						Log.v("Field NO." + fieldIndex + ": "
-								+ values[fieldIndex]);
 						if (TextUtils.isEmpty(values[fieldIndex])) {
+							Log.v(fields[fieldIndex] + " is null.");
 							found = false;
 							break;
 						}
@@ -142,15 +142,20 @@ public class CaptionMaker {
 				}
 
 				if (found) {
+					Log.v("Matched! NO." + ruleIndex);
+
 					String piece = SimpleResources.getStringValue(mCtx,
 							resIds[RULES], ruleIndex);
-					Log.v("Replace Piece = " + piece);
+					Log.v("Piece = " + piece);
 					fieldMask = 0xf;
 					for (fieldIndex = values.length - 1; fieldIndex >= 0; fieldIndex--) {
 						if (0 != (field & fieldMask)) {
 							piece = piece.replace(fields[fieldIndex],
 									values[fieldIndex]);
-							Log.v("NO." + fieldIndex + ": " + piece);
+							Log.v("NO." + fieldIndex + ": "
+									+ fields[fieldIndex]
+									+ " is replaced with \""
+									+ values[fieldIndex] + "\"");
 						}
 
 						fieldMask <<= 4;
@@ -158,6 +163,8 @@ public class CaptionMaker {
 
 					return piece;
 				}
+
+				Log.v("Ignore NO." + ruleIndex + " rule mask.");
 			}
 		}
 
@@ -360,6 +367,7 @@ public class CaptionMaker {
 		int index = SimpleResources.getIndexByMaskValue(mCtx,
 				R.array.sentence_rules_masks, getRuleId());
 
+		Log.v("Rule Id = " + Integer.toHexString(mRuleId));
 		if (index >= 0) {
 			String sentence = SimpleResources.getStringValue(mCtx,
 					R.array.sentence_rules, index);
