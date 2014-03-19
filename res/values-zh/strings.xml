@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string name="app_name">自动生成标题</string>
+    <string name="action_settings">设置</string>
+
+    <!-- Date & Time -->
+    <string name="date_time">日期时间</string>
+
+    <!-- Event -->
+    <string name="event">事件</string>
+
+    <!-- Place -->
+    <string name="place">位置</string>
+    <string name="city_type">城市</string>
+    <string name="venue_type">地点</string>
+
+    <!-- Persons -->
+    <string name="persons">参与人员</string>
+    <string name="persons_hint">人名1;人名2;人名3</string>
+
+    <!-- Action -->
+    <string name="submit">提交</string>
+
+    <!-- Birthday -->
+    <plurals name="day_age">
+        <item quantity="one">一天</item>
+        <item quantity="other">
+            <xliff:g id="number">%1$s</xliff:g>
+            天
+        </item>
+    </plurals>
+
+    <plurals name="week_age">
+        <item quantity="one">一个星期</item>
+        <item quantity="other">
+            <xliff:g id="number">%1$s</xliff:g>
+            个星期
+        </item>
+    </plurals>
+
+    <plurals name="month_age">
+        <item quantity="one">一个月</item>
+        <item quantity="other">
+            <xliff:g id="number">%1$s</xliff:g>
+            个月
+        </item>
+    </plurals>
+
+    <plurals name="year_age">
+        <item quantity="one">一年</item>
+        <item quantity="other">
+            <xliff:g id="number">%1$s</xliff:g>
+            年
+        </item>
+    </plurals>
+
+    <!-- Each Person -->
+    <string name="each_person_piece"><xliff:g id="name">%1$s</xliff:g>（<xliff:g id="birthday">%2$s</xliff:g>）</string>
+
+    <!-- Sentences -->
+    <string name="sentence">句子：</string>
+
+</resources>
