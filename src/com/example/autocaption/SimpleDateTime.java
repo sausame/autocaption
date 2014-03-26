@@ -98,7 +98,7 @@ public class SimpleDateTime {
 
     public static int[] getNeturalAge(Calendar calendarBirth,
                                       Calendar calendarNow) {
-        int diffYears = 0, diffMonths, diffDays;
+        int diffYears = 0, diffMonths, diffWeeks, diffDays;
         int dayOfBirth = calendarBirth.get(Calendar.DAY_OF_MONTH);
         int dayOfNow = calendarNow.get(Calendar.DAY_OF_MONTH);
         if (dayOfBirth <= dayOfNow) {
@@ -141,7 +141,10 @@ public class SimpleDateTime {
         diffYears = diffMonths / 12;
         diffMonths = diffMonths % 12;
 
-        return new int[]{diffYears, diffMonths, diffDays};
+		diffWeeks = diffDays / 7;
+		diffDays = diffDays % 7;
+
+        return new int[]{diffYears, diffMonths, diffWeeks, diffDays};
     }
 
     /**

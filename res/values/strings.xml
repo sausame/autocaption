@@ -17,7 +17,13 @@
 
     <!-- Persons -->
     <string name="persons">Persons</string>
-    <string name="persons_hint">Name1;Name2;Name3</string>
+    <string name="person1_hint">Name1</string>
+    <string name="person2_hint">Name2</string>
+    <string name="person3_hint">Name3</string>
+    <string name="other_persons_hint">Name4;Name5;Name6</string>    
+    <string name="birthday1_hint">Birthday1</string>
+    <string name="birthday2_hint">Birthday2</string>
+    <string name="birthday3_hint">Birthday3</string>
 
     <!-- Action -->
     <string name="submit">Submit</string>

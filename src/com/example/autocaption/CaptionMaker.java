@@ -284,9 +284,13 @@ public class CaptionMaker {
 	}
 
 	private String generateBirthdayString(Date birthday) {
+		if (null == birthday) {
+			return null;
+		}
+
 		int[] counts = SimpleDateTime.getNeturalAge(birthday);
 		final int[] resIds = { R.plurals.year_age, R.plurals.month_age,
-				R.plurals.day_age };
+				R.plurals.week_age, R.plurals.day_age };
 
 		if (counts[0] > AGE_MAX) {
 			return null;
@@ -306,8 +310,12 @@ public class CaptionMaker {
 		String birthdayString = generateBirthdayString(person.birthday);
 		String nameString = person.name;
 
-		return SimpleResources.getResources(mCtx).getString(
-				R.string.each_person_piece, nameString, birthdayString);
+		if (!TextUtils.isEmpty(birthdayString)) {
+			return SimpleResources.getResources(mCtx).getString(
+					R.string.each_person_piece, nameString, birthdayString);
+		}
+
+		return nameString;
 	}
 
 	private void generatePersons() {

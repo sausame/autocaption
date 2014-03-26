@@ -15,14 +15,22 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 public class MainActivity extends Activity {
+	private final static int MAX_PERSON_NUM = 3;
+
+	private int mClickedButtonResId = 0;
 
 	// where we display the selected date and time
 	private Button mDateButton;
 	private Button mTimeButton;
+
+	private EditText mPersonNameEditTextGroup[] = new EditText[MAX_PERSON_NUM];
+	private Button mBirthdayButtonGroup[] = new Button[MAX_PERSON_NUM];
+	private Date mBirthdayGroup[] = new Date[MAX_PERSON_NUM];
 
 	// date and time
 	private Date mDate = new Date();
@@ -49,6 +57,18 @@ public class MainActivity extends Activity {
 
 		setDialogOnClickListener(R.id.pickDate, DATE_DIALOG_ID);
 		setDialogOnClickListener(R.id.pickTime24, TIME_24_DIALOG_ID);
+
+		mPersonNameEditTextGroup[0] = (EditText) findViewById(R.id.person1);
+		mPersonNameEditTextGroup[1] = (EditText) findViewById(R.id.person2);
+		mPersonNameEditTextGroup[2] = (EditText) findViewById(R.id.person3);
+
+		mBirthdayButtonGroup[0] = (Button) findViewById(R.id.birthday1);
+		mBirthdayButtonGroup[1] = (Button) findViewById(R.id.birthday2);
+		mBirthdayButtonGroup[2] = (Button) findViewById(R.id.birthday3);
+
+		setDialogOnClickListener(R.id.birthday1, DATE_DIALOG_ID);
+		setDialogOnClickListener(R.id.birthday2, DATE_DIALOG_ID);
+		setDialogOnClickListener(R.id.birthday3, DATE_DIALOG_ID);
 
 		Button b = (Button) findViewById(R.id.submit);
 		b.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +100,7 @@ public class MainActivity extends Activity {
 		Button b = (Button) findViewById(buttonId);
 		b.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
+				mClickedButtonResId = v.getId();
 				showDialog(dialogId);
 			}
 		});
@@ -112,6 +133,16 @@ public class MainActivity extends Activity {
 		}
 	}
 
+	private Date updateDate(Button button, int year, int monthOfYear,
+			int dayOfMonth) {
+		button.setText(new StringBuilder()
+				// Month is 0 based so add 1
+				.append(monthOfYear + 1).append("-").append(dayOfMonth)
+				.append("-").append(year));
+
+		return SimpleDateTime.getDate(year, monthOfYear, dayOfMonth, 0, 0);
+	}
+
 	private void updateDisplay() {
 		mDateButton.setText(new StringBuilder()
 				// Month is 0 based so add 1
@@ -128,10 +159,22 @@ public class MainActivity extends Activity {
 		@Override
 		public void onDateSet(DatePicker view, int year, int monthOfYear,
 				int dayOfMonth) {
-			mYear = year;
-			mMonth = monthOfYear;
-			mDay = dayOfMonth;
-			updateDisplay();
+
+			if (R.id.pickDate == mClickedButtonResId) {
+				mYear = year;
+				mMonth = monthOfYear;
+				mDay = dayOfMonth;
+				updateDisplay();
+			} else if (R.id.birthday1 == mClickedButtonResId) {
+				mBirthdayGroup[0] = updateDate(mBirthdayButtonGroup[0], year,
+						monthOfYear, dayOfMonth);
+			} else if (R.id.birthday2 == mClickedButtonResId) {
+				mBirthdayGroup[1] = updateDate(mBirthdayButtonGroup[1], year,
+						monthOfYear, dayOfMonth);
+			} else if (R.id.birthday3 == mClickedButtonResId) {
+				mBirthdayGroup[2] = updateDate(mBirthdayButtonGroup[2], year,
+						monthOfYear, dayOfMonth);
+			}
 		}
 	};
 
@@ -152,8 +195,17 @@ public class MainActivity extends Activity {
 	}
 
 	protected void submit() {
+
+		// Date
+		Log.v("Date: " + mDate);
+
+		// Event
 		String event = ((EditText) this.findViewById(R.id.event)).getText()
 				.toString();
+
+		Log.v("Event: " + event);
+
+		// Place
 		Place place = new Place();
 		int selectId = ((RadioGroup) this.findViewById(R.id.place_type_radio))
 				.getCheckedRadioButtonId();
@@ -165,28 +217,45 @@ public class MainActivity extends Activity {
 		place.value = ((EditText) this.findViewById(R.id.place)).getText()
 				.toString();
 
-		String personNameStr = ((EditText) this.findViewById(R.id.persons))
-				.getText().toString();
-		Person[] persons = null;
-		if (!TextUtils.isEmpty(personNameStr)) {
-			String[] personNames = personNameStr.split(";");
-			persons = new Person[personNames.length];
+		Log.v("Place: " + place.type + ", " + place.value);
 
-			for (int index = 0; index < personNames.length; index++) {
-				Log.v("NO." + index + ":" + personNames[index]);
-				persons[index] = new Person();
-				persons[index].birthday = new Date();
-				persons[index].name = personNames[index];
+		// Persons
+		Log.v("Persons:");
+
+		ArrayList<Person> personList = new ArrayList<Person>();
+		for (int index = 0; index < MAX_PERSON_NUM; index++) {
+			String name = mPersonNameEditTextGroup[index].getText().toString();
+			if (!TextUtils.isEmpty(name)) {
+				Person person = new Person();
+				person.name = name;
+				person.birthday = mBirthdayGroup[index];
+
+				Log.v("NO." + personList.size() + ":" + name + ", "
+						+ mBirthdayGroup[index]);
+				personList.add(person);
 			}
 		}
 
-		Log.v("Date: " + mDate);
-		Log.v("Event: " + event);
-		Log.v("Place: " + place.type + ", " + place.value);
-		Log.v("Person: " + personNameStr);
+		String personNameStr = ((EditText) this
+				.findViewById(R.id.other_persons)).getText().toString();
+		if (!TextUtils.isEmpty(personNameStr)) {
+			String[] personNames = personNameStr.split(";");
+			for (int index = 0; index < personNames.length; index++) {
+				Person person = new Person();
+				person.name = personNames[index];
+				person.birthday = null;
+
+				Log.v("NO." + personList.size() + ":" + personNames[index]);
+				personList.add(person);
+			}
+		}
+
+		Person[] persons = (Person[]) personList.toArray(new Person[personList
+				.size()]);
 
 		String sentence = CaptionMaker.generate(this, mDate, event, place,
 				persons);
+
 		Log.v("Sentence: " + sentence);
 
 		mSentenceTextView.setText(sentence);

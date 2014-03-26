@@ -17,14 +17,19 @@
 
     <!-- Persons -->
     <string name="persons">参与人员</string>
-    <string name="persons_hint">人名1;人名2;人名3</string>
+    <string name="person1_hint">人名1</string>
+    <string name="person2_hint">人名2</string>
+    <string name="person3_hint">人名3</string>
+    <string name="other_persons_hint">人名4;人名5;人名6</string>    
+    <string name="birthday1_hint">生日1</string>
+    <string name="birthday2_hint">生日2</string>
+    <string name="birthday3_hint">生日3</string>
 
     <!-- Action -->
     <string name="submit">提交</string>
 
     <!-- Birthday -->
     <plurals name="day_age">
-        <item quantity="one">一天</item>
         <item quantity="other">
             <xliff:g id="number">%1$s</xliff:g>
             天
@@ -32,7 +37,6 @@
     </plurals>
 
     <plurals name="week_age">
-        <item quantity="one">一个星期</item>
         <item quantity="other">
             <xliff:g id="number">%1$s</xliff:g>
             个星期
@@ -40,7 +44,6 @@
     </plurals>
 
     <plurals name="month_age">
-        <item quantity="one">一个月</item>
         <item quantity="other">
             <xliff:g id="number">%1$s</xliff:g>
             个月
@@ -48,7 +51,6 @@
     </plurals>
 
     <plurals name="year_age">
-        <item quantity="one">一年</item>
         <item quantity="other">
             <xliff:g id="number">%1$s</xliff:g>
             年
