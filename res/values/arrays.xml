@@ -123,7 +123,7 @@
 
 
     <!-- Date piece -->
-    <integer-array name="date_rules_masks">
+    <integer-array name="date_rules_masks" translatable="false">
         <item>0x1000</item>
         <item>0x1000</item>
         <item>0x1000</item>
@@ -141,7 +141,7 @@
 		5. DATE
 		6. TIME
     -->
-    <integer-array name="date_rules_fields">
+    <integer-array name="date_rules_fields" translatable="false">
         <item>0x100011</item>
         <item>0x001011</item>
         <item>0x000010</item>
@@ -160,7 +160,7 @@
     </string-array>
 
     <!-- Event piece -->
-    <integer-array name="event_rules_masks">
+    <integer-array name="event_rules_masks" translatable="false">
         <item>0xF1FF</item>
     </integer-array>
 
@@ -168,7 +168,7 @@
         From upper to lower, each byte means:
 		1. EVENT
     -->
-    <integer-array name="event_rules_fields">
+    <integer-array name="event_rules_fields" translatable="false">
         <item>0x1</item>
     </integer-array>
 
@@ -177,7 +177,7 @@
     </string-array>
 
     <!-- Place piece -->
-    <integer-array name="place_rules_masks">
+    <integer-array name="place_rules_masks" translatable="false">
         <item>0xF010</item>
         <item>0xF010</item>
         <item>0xF011</item>
@@ -193,7 +193,7 @@
 		1. VENUS
 		2. CITY
     -->
-    <integer-array name="place_rules_fields">
+    <integer-array name="place_rules_fields" translatable="false">
         <item>0x10</item>
         <item>0x01</item>
         <item>0x10</item>
@@ -216,7 +216,7 @@
     </string-array>
 
     <!-- Person piece -->
-    <integer-array name="person_rules_masks">
+    <integer-array name="person_rules_masks" translatable="false">
         <item>0x1001</item>
         <item>0x1002</item>
         <item>0x1003</item>
@@ -233,7 +233,7 @@
 		2. PERSON2
 		3. PERSON3
     -->
-    <integer-array name="person_rules_fields">
+    <integer-array name="person_rules_fields" translatable="false">
         <item>0x100</item>
         <item>0x110</item>
         <item>0x111</item>
@@ -248,15 +248,15 @@
         <item>With <xliff:g id="person1">%1$s</xliff:g></item>
         <item>With <xliff:g id="person1">%1$s</xliff:g> and <xliff:g id="person2">%2$s</xliff:g></item>
         <item>With <xliff:g id="person1">%1$s</xliff:g>, <xliff:g id="person2">%2$s</xliff:g> and <xliff:g id="person3">%3$s</xliff:g></item>
-        <item>With <xliff:g id="person1">%1$s</xliff:g>, <xliff:g id="person2">%2$s</xliff:g> and <xliff:g id="person3">%3$s</xliff:g> &#8230;</item>
+        <item>With <xliff:g id="person1">%1$s</xliff:g>, <xliff:g id="person2">%2$s</xliff:g>, <xliff:g id="person3">%3$s</xliff:g> &#8230;</item>
         <item>With <xliff:g id="person1">%1$s</xliff:g></item>
         <item>with <xliff:g id="person1">%1$s</xliff:g> and <xliff:g id="person2">%2$s</xliff:g></item>
         <item>with <xliff:g id="person1">%1$s</xliff:g>, <xliff:g id="person2">%2$s</xliff:g> and <xliff:g id="person3">%3$s</xliff:g></item>
-        <item>with <xliff:g id="person1">%1$s</xliff:g>, <xliff:g id="person2">%2$s</xliff:g> and <xliff:g id="person3">%3$s</xliff:g> &#8230;</item>
+        <item>with <xliff:g id="person1">%1$s</xliff:g>, <xliff:g id="person2">%2$s</xliff:g>, <xliff:g id="person3">%3$s</xliff:g> &#8230;</item>
     </string-array>
 
     <!-- Sentence Rules -->
-    <integer-array name="sentence_rules_masks">
+    <integer-array name="sentence_rules_masks" translatable="false">
         <item>0x1000</item>
         <item>0x1100</item>
         <item>0x1010</item>

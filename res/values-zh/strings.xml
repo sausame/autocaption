@@ -53,7 +53,7 @@
     <plurals name="year_age">
         <item quantity="other">
             <xliff:g id="number">%1$s</xliff:g>
-            年
+            岁
         </item>
     </plurals>
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string-array name="upper_named_dates_string_values">
         <item>今天</item>
@@ -7,7 +7,13 @@
         <item>前天</item>
         <item>大前天</item>
     </string-array>
-    <string-array name="lower_named_dates_string_values" />
+    <string-array name="lower_named_dates_string_values">
+        <item>今天</item>
+        <item>昨天</item>
+        <item>前天</item>
+        <item>大前天</item>
+    </string-array>
+
     <string-array name="upper_days_in_week_string_values">
         <item>星期日</item>
         <item>星期一</item>
@@ -17,7 +23,16 @@
         <item>星期五</item>
         <item>星期六</item>
     </string-array>
-    <string-array name="lower_days_in_week_string_values" />
+    <string-array name="lower_days_in_week_string_values">
+        <item>星期日</item>
+        <item>星期一</item>
+        <item>星期二</item>
+        <item>星期三</item>
+        <item>星期四</item>
+        <item>星期五</item>
+        <item>星期六</item>
+    </string-array>
+
     <string-array name="upper_days_in_last_week_string_values">
         <item>上周日</item>
         <item>上周一</item>
@@ -27,7 +42,16 @@
         <item>上周五</item>
         <item>上周六</item>
     </string-array>
-    <string-array name="lower_days_in_last_week_string_values" />
+	<string-array name="lower_days_in_last_week_string_values">
+        <item>上周日</item>
+        <item>上周一</item>
+        <item>上周二</item>
+        <item>上周三</item>
+        <item>上周四</item>
+        <item>上周五</item>
+        <item>上周六</item>
+    </string-array>
+
     <string-array name="hour_values">
         <item>夜里</item>
         <item>黎明</item>
@@ -40,111 +64,58 @@
 
     <!-- Each piece has three arraies, masks, fields and rules, and their lengths should be same. -->
 
-
     <!-- Date piece -->
-    <integer-array name="date_rules_masks">
-        <item>0x1000</item>
-        <item>0x1000</item>
-        <item>0x1000</item>
-        <item>0x1FFF</item>
-        <item>0x1FFF</item>
-        <item>0x1FFF</item>
-    </integer-array>
-
-    <!-- Each byte means one of [UPPER-NAMED-DATE] [LOWER-NAMED-DATE] [UPPER-WEEKLY-DATE] [LOWER-WEEKLY-DATE] [DATE] [TIME] from upper to lower -->
-    <integer-array name="date_rules_fields">
-        <item>0x100011</item>
-        <item>0x001011</item>
-        <item>0x000010</item>
-        <item>0x100011</item>
-        <item>0x001011</item>
-        <item>0x000010</item>
-    </integer-array>
-
     <string-array name="date_rules">
-        <item>[UPPER-NAMED-DATE][TIME]（[DATE]）</item>
-        <item>[UPPER-WEEKLY-DATE][TIME]（[DATE]）</item>
-        <item>[DATE]</item>
-        <item>[UPPER-NAMED-DATE][TIME]（[DATE]），</item>
-        <item>[UPPER-WEEKLY-DATE][TIME]（[DATE]），</item>
-        <item>[DATE]，</item>
+        <item><xliff:g id="upper_named_date">%1$s</xliff:g><xliff:g id="time">%6$s</xliff:g>（<xliff:g id="date">%5$s</xliff:g>）</item>
+        <item><xliff:g id="upper_weekly_date">%3$s</xliff:g><xliff:g id="time">%6$s</xliff:g>（<xliff:g id="date">%5$s</xliff:g>）</item>
+        <item><xliff:g id="date">%5$s</xliff:g></item>
+        <item><xliff:g id="lower_named_date">%2$s</xliff:g><xliff:g id="time">%6$s</xliff:g>（<xliff:g id="date">%5$s</xliff:g>）</item>
+        <item><xliff:g id="lower_weekly_date">%4$s</xliff:g><xliff:g id="time">%6$s</xliff:g>（<xliff:g id="date">%5$s</xliff:g>）</item>
+        <item><xliff:g id="date">%5$s</xliff:g></item>
     </string-array>
 
     <!-- Event piece -->
-    <integer-array name="event_rules_masks">
-        <item>0xF1FF</item>
-    </integer-array>
-
-    <!-- Each byte means one of [EVENT] from upper to lower -->
-    <integer-array name="event_rules_fields">
-        <item>0x1</item>
-    </integer-array>
-
     <string-array name="event_rules">
-        <item>[EVENT]</item>
+        <item><xliff:g id="event">%1$s</xliff:g></item>
     </string-array>
 
     <!-- Place piece -->
-    <integer-array name="place_rules_masks">
-        <item>0xFF1F</item>
-        <item>0xFF1F</item>
-    </integer-array>
-
-    <!-- Each byte means one of [VENUS], [CITY] from upper to lower -->
-    <integer-array name="place_rules_fields">
-        <item>0x10</item>
-        <item>0x01</item>
-    </integer-array>
-
     <string-array name="place_rules">
-        <item>在[VENUS]</item>
-        <item>在[CITY]</item>
+        <item>在<xliff:g id="venus">%1$s</xliff:g></item>
+        <item>在<xliff:g id="city">%2$s</xliff:g></item>
+        <item>在<xliff:g id="venus">%1$s</xliff:g></item>
+        <item>在<xliff:g id="city">%2$s</xliff:g></item>
+        <item>在<xliff:g id="venus">%1$s</xliff:g></item>
+        <item>在<xliff:g id="city">%2$s</xliff:g></item>
+        <item>在<xliff:g id="venus">%1$s</xliff:g></item>
+        <item>在<xliff:g id="city">%2$s</xliff:g></item>
     </string-array>
 
     <!-- Person piece -->
-    <integer-array name="person_rules_masks">
-        <item>0xFFF1</item>
-        <item>0xFFF2</item>
-        <item>0xFFF3</item>
-        <item>0xFFFF</item>
-    </integer-array>
-
-    <!-- Each byte means one of [PERSON1], [PERSON2], [PERSON3] from upper to lower -->
-    <integer-array name="person_rules_fields">
-        <item>0x100</item>
-        <item>0x110</item>
-        <item>0x111</item>
-        <item>0x111</item>
-    </integer-array>
-
     <string-array name="person_rules">
-        <item>[PERSON1]</item>
-        <item>[PERSON1]和[PERSON2]</item>
-        <item>[PERSON1]，[PERSON2]和[PERSON3]</item>
-        <item>[PERSON1]，[PERSON2]，[PERSON3]……</item>
+        <item><xliff:g id="person1">%1$s</xliff:g></item>
+        <item><xliff:g id="person1">%1$s</xliff:g>和<xliff:g id="person2">%2$s</xliff:g></item>
+        <item><xliff:g id="person1">%1$s</xliff:g>，<xliff:g id="person2">%2$s</xliff:g>和<xliff:g id="person3">%3$s</xliff:g></item>
+        <item><xliff:g id="person1">%1$s</xliff:g>，<xliff:g id="person2">%2$s</xliff:g>，<xliff:g id="person3">%3$s</xliff:g>……</item>
+        <item><xliff:g id="person1">%1$s</xliff:g></item>
+        <item><xliff:g id="person1">%1$s</xliff:g>和<xliff:g id="person2">%2$s</xliff:g></item>
+        <item><xliff:g id="person1">%1$s</xliff:g>，<xliff:g id="person2">%2$s</xliff:g>和<xliff:g id="person3">%3$s</xliff:g></item>
+        <item><xliff:g id="person1">%1$s</xliff:g>，<xliff:g id="person2">%2$s</xliff:g>，<xliff:g id="person3">%3$s</xliff:g>……</item>
     </string-array>
 
     <!-- Sentence Rules -->
-    <integer-array name="sentence_rules_masks">
-        <item>0x1000</item>
-        <item>0x1100</item>
-        <item>0x1010</item>
-        <item>0x100F</item>
-        <item>0x1110</item>
-        <item>0x110F</item>
-        <item>0x101F</item>
-        <item>0x111F</item>
-    </integer-array>
-
     <string-array name="sentence_rules">
-        <item>[DATE-PIECE]</item>
-        <item>[DATE-PIECE][EVENT-PIECE]</item>
-        <item>[DATE-PIECE][PLACE-PIECE]</item>
-        <item>[DATE-PIECE][PERSON-PIECE]</item>
-        <item>[DATE-PIECE][PLACE-PIECE][EVENT-PIECE]</item>
-        <item>[DATE-PIECE][PERSON-PIECE][EVENT-PIECE]</item>
-        <item>[DATE-PIECE][PERSON-PIECE][PLACE-PIECE]</item>
-        <item>[DATE-PIECE][PERSON-PIECE][PLACE-PIECE][EVENT-PIECE]</item>
+        <item><xliff:g id="date_piece">%1$s</xliff:g></item>
+        <item><xliff:g id="date_piece">%1$s</xliff:g><xliff:g id="event_piece">%2$s</xliff:g></item>
+        <item><xliff:g id="date_piece">%1$s</xliff:g><xliff:g id="place_piece">%3$s</xliff:g></item>
+        <item><xliff:g id="date_piece">%1$s</xliff:g><xliff:g id="person_piece">%4$s</xliff:g></item>
+        <item><xliff:g id="date_piece">%1$s</xliff:g><xliff:g id="place_piece">%3$s</xliff:g><xliff:g id="event_piece">%2$s</xliff:g></item>
+        <item><xliff:g id="date_piece">%1$s</xliff:g><xliff:g id="person_piece">%4$s</xliff:g><xliff:g id="event_piece">%2$s</xliff:g></item>
+        <item><xliff:g id="date_piece">%1$s</xliff:g><xliff:g id="person_piece">%4$s</xliff:g><xliff:g id="event_piece">%2$s</xliff:g></item>
+        <item><xliff:g id="date_piece">%1$s</xliff:g><xliff:g id="person_piece">%4$s</xliff:g><xliff:g id="place_piece">%3$s</xliff:g></item>
+        <item><xliff:g id="date_piece">%1$s</xliff:g><xliff:g id="person_piece">%4$s</xliff:g><xliff:g id="place_piece">%3$s</xliff:g></item>
+        <item><xliff:g id="date_piece">%1$s</xliff:g><xliff:g id="person_piece">%4$s</xliff:g><xliff:g id="place_piece">%3$s</xliff:g><xliff:g id="event_piece">%2$s</xliff:g></item>
+        <item><xliff:g id="date_piece">%1$s</xliff:g><xliff:g id="person_piece">%4$s</xliff:g><xliff:g id="place_piece">%3$s</xliff:g><xliff:g id="event_piece">%2$s</xliff:g></item>
     </string-array>
 
 </resources>
