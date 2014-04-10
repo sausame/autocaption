@@ -145,22 +145,7 @@ public class CaptionMaker {
 					Log.v("Matched! NO." + ruleIndex);
 
 					String piece = SimpleResources.getStringValue(mCtx,
-							resIds[RULES], ruleIndex);
-					Log.v("Piece = " + piece);
-					fieldMask = 0xf;
-					for (fieldIndex = values.length - 1; fieldIndex >= 0; fieldIndex--) {
-						if (0 != (field & fieldMask)) {
-							piece = piece.replace(fields[fieldIndex],
-									values[fieldIndex]);
-							Log.v("NO." + fieldIndex + ": "
-									+ fields[fieldIndex]
-									+ " is replaced with \""
-									+ values[fieldIndex] + "\"");
-						}
-
-						fieldMask <<= 4;
-					}
-
+							resIds[RULES], ruleIndex, values);
 					return piece;
 				}
 
@@ -335,42 +320,6 @@ public class CaptionMaker {
 		mPersonsString = generatePiece(resIds, PERSON_FIELDS, values);
 	}
 
-	private String implementDate(String sentence) {
-		if (0 == (DATE_FIELD_MASK & mRuleId)) {
-			return sentence;
-		}
-		Log.v("Sentence = " + sentence);
-		generateDateTime();
-		return sentence.replace(DATE_PIECE, mDateTimeString);
-	}
-
-	private String implementEvent(String sentence) {
-		if (0 == (EVENT_FIELD_MASK & mRuleId)) {
-			return sentence;
-		}
-		Log.v("Sentence = " + sentence);
-		generateEvent();
-		return sentence.replace(EVENT_PIECE, mEventString);
-	}
-
-	private String implementPlace(String sentence) {
-		if (0 == (PLACE_FIELD_MASK & mRuleId)) {
-			return sentence;
-		}
-		Log.v("Sentence = " + sentence);
-		generatePlace();
-		return sentence.replace(PLACE_PIECE, mPlaceString);
-	}
-
-	private String implementPersons(String sentence) {
-		if (0 == (PERSON_FIELD_MASK & mRuleId)) {
-			return sentence;
-		}
-		Log.v("Sentence = " + sentence);
-		generatePersons();
-		return sentence.replace(PERSON_PIECE, mPersonsString);
-	}
-
 	private String generate() {
 		int index = SimpleResources.getIndexByMaskValue(mCtx,
 				R.array.sentence_rules_masks, getRuleId());
@@ -380,7 +329,28 @@ public class CaptionMaker {
 			String sentence = SimpleResources.getStringValue(mCtx,
 					R.array.sentence_rules, index);
 
-			sentence = implementPersons(implementPlace(implementEvent(implementDate(sentence))));
+			if (0 != (DATE_FIELD_MASK & mRuleId)) {
+				generateDateTime();
+				Log.v("DateTime = " + mDateTimeString);
+			}
+
+			if (0 != (EVENT_FIELD_MASK & mRuleId)) {
+				generateEvent();
+				Log.v("Event = " + mEventString);
+			}
+
+			if (0 != (PLACE_FIELD_MASK & mRuleId)) {
+				generatePlace();
+				Log.v("Place = " + mPlaceString);
+			}
+
+			if (0 != (PERSON_FIELD_MASK & mRuleId)) {
+				generatePersons();
+				Log.v("Persons = " + mPersonsString);
+			}
+
+			sentence = String.format(sentence, mDateTimeString, mEventString,
+					mPlaceString, mPersonsString);
 			Log.v("Sentence = " + sentence);
 			return sentence;
 		}

@@ -16,6 +16,17 @@ public class SimpleResources {
 		return null;
 	}
 
+	public static String getStringValue(Context ctx, int arrayResId, int index,
+			String[] values) {
+		String raw = getStringValue(ctx, arrayResId, index);
+
+		if (raw != null) {
+			raw = String.format(raw, (Object[])values);
+		}
+
+		return raw;
+	}
+
 	public static int getIndexByValue(Context ctx, int arrayResId, int value) {
 		int[] values = ctx.getResources().getIntArray(arrayResId);
 
