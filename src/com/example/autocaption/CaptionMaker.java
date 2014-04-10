@@ -22,19 +22,6 @@ public class CaptionMaker {
 	public final static int PLACE_FIELD_MASK = 0x00F0;
 	public final static int PERSON_FIELD_MASK = 0x000F;
 
-	public final static String DATE_PIECE = "[DATE-PIECE]";
-	public final static String EVENT_PIECE = "[EVENT-PIECE]";
-	public final static String PLACE_PIECE = "[PLACE-PIECE]";
-	public final static String PERSON_PIECE = "[PERSON-PIECE]";
-
-	public final static String DATE_FIELDS[] = { "[UPPER-NAMED-DATE]",
-			"[LOWER-NAMED-DATE]", "[UPPER-WEEKLY-DATE]", "[LOWER-WEEKLY-DATE]",
-			"[DATE]", "[TIME]" };
-	public final static String EVENT_FIELDS[] = { "[EVENT]" };
-	public final static String PLACE_FIELDS[] = { "[VENUS]", "[CITY]" };
-	public final static String PERSON_FIELDS[] = { "[PERSON1]", "[PERSON2]",
-			"[PERSON3]" };
-
 	private int mRuleId;
 
 	private Date mDate;
@@ -111,8 +98,7 @@ public class CaptionMaker {
 		return mRuleId;
 	}
 
-	private String generatePiece(int[] resIds, final String[] fields,
-			String[] values) {
+	private String generatePiece(int[] resIds, String[] values) {
 		int[] rulesMasks = SimpleResources.getIntArray(mCtx,
 				resIds[RULES_MASKS_ID]);
 		int[] fieldIndexs = SimpleResources.getIntArray(mCtx,
@@ -133,7 +119,6 @@ public class CaptionMaker {
 				for (fieldIndex = values.length - 1; fieldIndex >= 0; fieldIndex--) {
 					if (0 != (field & fieldMask)) {
 						if (TextUtils.isEmpty(values[fieldIndex])) {
-							Log.v(fields[fieldIndex] + " is null.");
 							found = false;
 							break;
 						}
@@ -233,7 +218,7 @@ public class CaptionMaker {
 				generateLowerNamedDate(), generateUpperWeeklyDate(),
 				generateLowerWeeklyDate(), generateDate(), generateTime() };
 
-		mDateTimeString = generatePiece(resIds, DATE_FIELDS, values);
+		mDateTimeString = generatePiece(resIds, values);
 	}
 
 	private void generateEvent() {
@@ -241,7 +226,7 @@ public class CaptionMaker {
 				R.array.event_rules_fields, R.array.event_rules };
 		String values[] = new String[] { mEvent };
 
-		mEventString = generatePiece(resIds, EVENT_FIELDS, values);
+		mEventString = generatePiece(resIds, values);
 	}
 
 	private String generateVenue() {
@@ -265,7 +250,7 @@ public class CaptionMaker {
 				R.array.place_rules_fields, R.array.place_rules };
 		String values[] = new String[] { generateVenue(), generateCity() };
 
-		mPlaceString = generatePiece(resIds, PLACE_FIELDS, values);
+		mPlaceString = generatePiece(resIds, values);
 	}
 
 	private String generateBirthdayString(Date birthday) {
@@ -317,7 +302,7 @@ public class CaptionMaker {
 			values[index] = null;
 		}
 
-		mPersonsString = generatePiece(resIds, PERSON_FIELDS, values);
+		mPersonsString = generatePiece(resIds, values);
 	}
 
 	private String generate() {
