@@ -190,7 +190,7 @@
 
     <!--
         From upper to lower, each byte means:
-		1. VENUS
+		1. VENUE
 		2. CITY
     -->
     <integer-array name="place_rules_fields" translatable="false">
@@ -205,13 +205,13 @@
     </integer-array>
 
     <string-array name="place_rules">
-        <item>At <xliff:g id="venus">%1$s</xliff:g></item>
+        <item>At <xliff:g id="venue">%1$s</xliff:g></item>
         <item>In <xliff:g id="city">%2$s</xliff:g></item>
-        <item>at <xliff:g id="venus">%1$s</xliff:g></item>
+        <item>at <xliff:g id="venue">%1$s</xliff:g></item>
         <item>in <xliff:g id="city">%2$s</xliff:g></item>
-        <item>At <xliff:g id="venus">%1$s</xliff:g></item>
+        <item>At <xliff:g id="venue">%1$s</xliff:g></item>
         <item>In <xliff:g id="city">%2$s</xliff:g></item>
-        <item>at <xliff:g id="venus">%1$s</xliff:g></item>
+        <item>at <xliff:g id="venue">%1$s</xliff:g></item>
         <item>in <xliff:g id="city">%2$s</xliff:g></item>
     </string-array>
 

@@ -81,13 +81,13 @@
 
     <!-- Place piece -->
     <string-array name="place_rules">
-        <item>在<xliff:g id="venus">%1$s</xliff:g></item>
+        <item>在<xliff:g id="venue">%1$s</xliff:g></item>
         <item>在<xliff:g id="city">%2$s</xliff:g></item>
-        <item>在<xliff:g id="venus">%1$s</xliff:g></item>
+        <item>在<xliff:g id="venue">%1$s</xliff:g></item>
         <item>在<xliff:g id="city">%2$s</xliff:g></item>
-        <item>在<xliff:g id="venus">%1$s</xliff:g></item>
+        <item>在<xliff:g id="venue">%1$s</xliff:g></item>
         <item>在<xliff:g id="city">%2$s</xliff:g></item>
-        <item>在<xliff:g id="venus">%1$s</xliff:g></item>
+        <item>在<xliff:g id="venue">%1$s</xliff:g></item>
         <item>在<xliff:g id="city">%2$s</xliff:g></item>
     </string-array>
 
