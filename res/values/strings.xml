@@ -28,42 +28,6 @@
     <!-- Action -->
     <string name="submit">Submit</string>
 
-    <!-- Birthday -->
-    <plurals name="day_age">
-        <item quantity="one">one day</item>
-        <item quantity="other">
-            <xliff:g id="number">%1$s</xliff:g>
-            days
-        </item>
-    </plurals>
-
-    <plurals name="week_age">
-        <item quantity="one">one week</item>
-        <item quantity="other">
-            <xliff:g id="number">%1$s</xliff:g>
-            weeks
-        </item>
-    </plurals>
-
-    <plurals name="month_age">
-        <item quantity="one">one month</item>
-        <item quantity="other">
-            <xliff:g id="number">%1$s</xliff:g>
-            months
-        </item>
-    </plurals>
-
-    <plurals name="year_age">
-        <item quantity="one">one year</item>
-        <item quantity="other">
-            <xliff:g id="number">%1$s</xliff:g>
-            years
-        </item>
-    </plurals>
-
-    <!-- Each Person -->
-    <string name="each_person_piece"><xliff:g id="name">%1$s</xliff:g>(<xliff:g id="birthday">%2$s</xliff:g>)</string>
-
     <!-- Sentences -->
     <string name="sentence">Sentence:</string>
 

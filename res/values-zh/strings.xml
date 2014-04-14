@@ -28,38 +28,6 @@
     <!-- Action -->
     <string name="submit">提交</string>
 
-    <!-- Birthday -->
-    <plurals name="day_age">
-        <item quantity="other">
-            <xliff:g id="number">%1$s</xliff:g>
-            天
-        </item>
-    </plurals>
-
-    <plurals name="week_age">
-        <item quantity="other">
-            <xliff:g id="number">%1$s</xliff:g>
-            个星期
-        </item>
-    </plurals>
-
-    <plurals name="month_age">
-        <item quantity="other">
-            <xliff:g id="number">%1$s</xliff:g>
-            个月
-        </item>
-    </plurals>
-
-    <plurals name="year_age">
-        <item quantity="other">
-            <xliff:g id="number">%1$s</xliff:g>
-            岁
-        </item>
-    </plurals>
-
-    <!-- Each Person -->
-    <string name="each_person_piece"><xliff:g id="name">%1$s</xliff:g>（<xliff:g id="birthday">%2$s</xliff:g>）</string>
-
     <!-- Sentences -->
     <string name="sentence">句子：</string>
 
