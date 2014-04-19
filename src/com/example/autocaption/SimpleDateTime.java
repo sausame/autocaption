@@ -84,8 +84,7 @@ public class SimpleDateTime {
     }
 
     public static String getDayString(Date date) {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        return formatter.format(date);
+        return SimpleDateFormat.getDateInstance().format(date);
     }
 
     public static int getHourOfDay(Date date) {
