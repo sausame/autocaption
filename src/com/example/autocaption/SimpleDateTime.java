@@ -56,6 +56,17 @@ public class SimpleDateTime {
 		return (diff + dayInWeek);
 	}
 
+	public static String getDayInThisWeek(Date date) {
+		int diff = compareFirstDayInThisWeek(date);
+		if (diff >= 0 && diff < Calendar.DAY_OF_WEEK) {
+			SimpleDateFormat sdf = new SimpleDateFormat();
+			sdf.applyLocalizedPattern("cccc");
+			return sdf.format(date);
+		}
+
+		return null;
+	}
+
     public static int compareFirstDayInLastWeek(Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());

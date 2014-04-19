@@ -14,25 +14,6 @@
         <item>大前天</item>
     </string-array>
 
-    <string-array name="upper_days_in_week_string_values">
-        <item>星期日</item>
-        <item>星期一</item>
-        <item>星期二</item>
-        <item>星期三</item>
-        <item>星期四</item>
-        <item>星期五</item>
-        <item>星期六</item>
-    </string-array>
-    <string-array name="lower_days_in_week_string_values">
-        <item>星期日</item>
-        <item>星期一</item>
-        <item>星期二</item>
-        <item>星期三</item>
-        <item>星期四</item>
-        <item>星期五</item>
-        <item>星期六</item>
-    </string-array>
-
     <string-array name="upper_days_in_last_week_string_values">
         <item>上周日</item>
         <item>上周一</item>

@@ -156,21 +156,17 @@ public class CaptionMaker {
 		return null;
 	}
 
-	private String generateWeeklyDate(int daysInWeekResId,
-			int daysInLastWeekResId) {
+	private String generateWeeklyDate(int daysInLastWeekResId) {
 		String briefString;
 
 		// 1. Check if it's in this week
-		int diff = SimpleDateTime.compareFirstDayInThisWeek(mDate);
-
-		briefString = SimpleResources.getStringValue(mCtx, daysInWeekResId,
-				diff);
+		briefString = SimpleDateTime.getDayInThisWeek(mDate);
 		if (!TextUtils.isEmpty(briefString)) {
 			return briefString;
 		}
 
 		// 2. Check if it's in the last week.
-		diff = SimpleDateTime.compareFirstDayInLastWeek(mDate);
+		int diff = SimpleDateTime.compareFirstDayInLastWeek(mDate);
 
 		briefString = SimpleResources.getStringValue(mCtx, daysInLastWeekResId,
 				diff);
@@ -191,13 +187,11 @@ public class CaptionMaker {
 	}
 
 	private String generateUpperWeeklyDate() {
-		return generateWeeklyDate(R.array.upper_days_in_week_string_values,
-				R.array.upper_days_in_last_week_string_values);
+		return generateWeeklyDate(R.array.upper_days_in_last_week_string_values);
 	}
 
 	private String generateLowerWeeklyDate() {
-		return generateWeeklyDate(R.array.lower_days_in_week_string_values,
-				R.array.lower_days_in_last_week_string_values);
+		return generateWeeklyDate(R.array.lower_days_in_last_week_string_values);
 	}
 
 	private String generateDate() {

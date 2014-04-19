@@ -29,24 +29,6 @@
         <item>the day before yesterday</item>
         <item>the bigger day before yesterday</item>
     </string-array>
-    <string-array name="upper_days_in_week_string_values">
-        <item>Sunday</item>
-        <item>Monday</item>
-        <item>Tuesday</item>
-        <item>Wednesday</item>
-        <item>Thursday</item>
-        <item>Friday</item>
-        <item>Saturday</item>
-    </string-array>
-    <string-array name="lower_days_in_week_string_values">
-        <item>Sunday</item>
-        <item>Monday</item>
-        <item>Tuesday</item>
-        <item>Wednesday</item>
-        <item>Thursday</item>
-        <item>Friday</item>
-        <item>Saturday</item>
-    </string-array>
     <string-array name="upper_days_in_last_week_string_values">
         <item>Last Sunday</item>
         <item>Last Monday</item>
