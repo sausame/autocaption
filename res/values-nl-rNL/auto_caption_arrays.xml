@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (C) 2008 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string-array name="upper_named_dates_string_values">
+        <item>"Vandaag"</item>
+        <item>"Gisteren"</item>
+        <item>"Eergisteren"</item>
+        <item>"Drie dagen geleden"</item>
+    </string-array>
+    <string-array name="lower_named_dates_string_values">
+        <item>"vandaag"</item>
+        <item>"gisteren"</item>
+        <item>"eergisteren"</item>
+        <item>"drie dagen geleden"</item>
+    </string-array>
+    <string-array name="upper_days_in_week_string_values">
+        <item>"Zondag"</item>
+        <item>"Maandag"</item>
+        <item>"Dinsdag"</item>
+        <item>"Woensdag"</item>
+        <item>"Donderdag"</item>
+        <item>"Vrijdag"</item>
+        <item>"Zaterdag"</item>
+    </string-array>
+    <string-array name="lower_days_in_week_string_values">
+        <item>"Zondag"</item>
+        <item>"Maandag"</item>
+        <item>"Dinsdag"</item>
+        <item>"Woensdag"</item>
+        <item>"Donderdag"</item>
+        <item>"Vrijdag"</item>
+        <item>"Zaterdag"</item>
+    </string-array>
+    <string-array name="upper_days_in_last_week_string_values">
+        <item>"Afgelopen zondag"</item>
+        <item>"Afgelopen maandag"</item>
+        <item>"Afgelopen dinsdag"</item>
+        <item>"Afgelopen woensdag"</item>
+        <item>"Afgelopen donderdag"</item>
+        <item>"Afgelopen vrijdag"</item>
+        <item>"Afgelopen zaterdag"</item>
+    </string-array>
+    <string-array name="lower_days_in_last_week_string_values">
+        <item>"afgelopen zondag"</item>
+        <item>"afgelopen maandag"</item>
+        <item>"afgelopen dinsdag"</item>
+        <item>"afgelopen woensdag"</item>
+        <item>"afgelopen donderdag"</item>
+        <item>"afgelopen vrijdag"</item>
+        <item>"afgelopen zaterdag"</item>
+    </string-array>
+
+    <integer-array name="hour_indexs" translatable="false">
+        <item>6</item>
+        <item>8</item>
+        <item>12</item>
+        <item>14</item>
+        <item>18</item>
+        <item>22</item>
+        <item>24</item>
+    </integer-array>
+
+    <string-array name="hour_values">
+        <item>"nacht"</item>
+        <item>"voor zonsopgang"</item>
+        <item>"ochtend"</item>
+        <item>"twaalf uur \'s middags"</item>
+        <item>"middag"</item>
+        <item>"avond"</item>
+        <item>"nacht"</item>
+    </string-array>
+
+    <!--
+        From upper to lower, each byte means:
+		1. DATE
+		2. EVENT
+		3. PLACE
+		4. PERSON
+
+		each byte also means the number of each piece, and an 'F' means that
+		the number is not 0 nor in the others number which exist in the list.
+    -->
+    <integer-array name="rule_ids" translatable="false">
+        <item>0x1000</item>
+        <item>0x1100</item>
+        <item>0x1010</item>
+        <item>0x1001</item>
+        <item>0x1002</item>
+        <item>0x1003</item>
+        <item>0x100F</item>
+        <item>0x1110</item>
+        <item>0x1101</item>
+        <item>0x1102</item>
+        <item>0x1103</item>
+        <item>0x110F</item>
+        <item>0x1011</item>
+        <item>0x1012</item>
+        <item>0x1013</item>
+        <item>0x101F</item>
+        <item>0x1111</item>
+        <item>0x1112</item>
+        <item>0x1113</item>
+        <item>0x111F</item>
+    </integer-array>
+
+    <!-- Each piece has three arraies, masks, fields and rules, and their lengths should be same. -->
+
+
+    <!-- Date piece -->
+    <integer-array name="date_rules_masks" translatable="false">
+        <item>0x1000</item>
+        <item>0x1000</item>
+        <item>0x1000</item>
+        <item>0x1FFF</item>
+        <item>0x1FFF</item>
+        <item>0x1FFF</item>
+    </integer-array>
+
+    <!--
+        From upper to lower, each byte means:
+		1. UPPER-NAMED-DATE
+		2. LOWER-NAMED-DATE
+		3. UPPER-WEEKLY-DATE
+		4. LOWER-WEEKLY-DATE
+		5. DATE
+		6. TIME
+    -->
+    <integer-array name="date_rules_fields" translatable="false">
+        <item>0x100011</item>
+        <item>0x001011</item>
+        <item>0x000010</item>
+        <item>0x010011</item>
+        <item>0x000111</item>
+        <item>0x000010</item>
+    </integer-array>
+
+    <string-array name="date_rules">
+        <item>"<xliff:g id="upper_named_date">%1$s</xliff:g> <xliff:g id="time">%6$s</xliff:g> (<xliff:g id="date">%5$s</xliff:g>)"</item>
+        <item>"<xliff:g id="upper_weekly_date">%3$s</xliff:g> <xliff:g id="time">%6$s</xliff:g> (<xliff:g id="date">%5$s</xliff:g>)"</item>
+        <item>"<xliff:g id="date">%5$s</xliff:g>"</item>
+        <item>"<xliff:g id="lower_named_date">%2$s</xliff:g> <xliff:g id="time">%6$s</xliff:g> (<xliff:g id="date">%5$s</xliff:g>)"</item>
+        <item>"op <xliff:g id="lower_weekly_date">%4$s</xliff:g> <xliff:g id="time">%6$s</xliff:g> (<xliff:g id="date">%5$s</xliff:g>)"</item>
+        <item>"op <xliff:g id="date">%5$s</xliff:g>"</item>
+    </string-array>
+
+    <!-- Event piece -->
+    <integer-array name="event_rules_masks" translatable="false">
+        <item>0xF1FF</item>
+    </integer-array>
+
+    <!--
+        From upper to lower, each byte means:
+		1. EVENT
+    -->
+    <integer-array name="event_rules_fields" translatable="false">
+        <item>0x1</item>
+    </integer-array>
+
+    <string-array name="event_rules">
+        <item>"<xliff:g id="event">%1$s</xliff:g>"</item>
+    </string-array>
+
+    <!-- Place piece -->
+    <integer-array name="place_rules_masks" translatable="false">
+        <item>0xF010</item>
+        <item>0xF010</item>
+        <item>0xF011</item>
+        <item>0xF011</item>
+        <item>0xF01F</item>
+        <item>0xF01F</item>
+        <item>0xFF1F</item>
+        <item>0xFF1F</item>
+    </integer-array>
+
+    <!--
+        From upper to lower, each byte means:
+		1. VENUE
+		2. CITY
+    -->
+    <integer-array name="place_rules_fields" translatable="false">
+        <item>0x10</item>
+        <item>0x01</item>
+        <item>0x10</item>
+        <item>0x01</item>
+        <item>0x10</item>
+        <item>0x01</item>
+        <item>0x10</item>
+        <item>0x01</item>
+    </integer-array>
+
+    <string-array name="place_rules">
+        <item>"Op <xliff:g id="venue">%1$s</xliff:g>"</item>
+        <item>"In <xliff:g id="city">%2$s</xliff:g>"</item>
+        <item>"op <xliff:g id="venue">%1$s</xliff:g>"</item>
+        <item>"in <xliff:g id="city">%2$s</xliff:g>"</item>
+        <item>"Op <xliff:g id="venue">%1$s</xliff:g>"</item>
+        <item>"In <xliff:g id="city">%2$s</xliff:g>"</item>
+        <item>"op <xliff:g id="venue">%1$s</xliff:g>"</item>
+        <item>"in <xliff:g id="city">%2$s</xliff:g>"</item>
+    </string-array>
+
+    <!-- Person piece -->
+    <integer-array name="person_rules_masks" translatable="false">
+        <item>0x1001</item>
+        <item>0x1002</item>
+        <item>0x1003</item>
+        <item>0x100F</item>
+        <item>0xFFF1</item>
+        <item>0xFFF2</item>
+        <item>0xFFF3</item>
+        <item>0xFFFF</item>
+    </integer-array>
+
+    <!--
+        From upper to lower, each byte means:
+		1. PERSON1
+		2. PERSON2
+		3. PERSON3
+    -->
+    <integer-array name="person_rules_fields" translatable="false">
+        <item>0x100</item>
+        <item>0x110</item>
+        <item>0x111</item>
+        <item>0x111</item>
+        <item>0x100</item>
+        <item>0x110</item>
+        <item>0x111</item>
+        <item>0x111</item>
+    </integer-array>
+
+    <string-array name="person_rules">
+        <item>"Met <xliff:g id="person1">%1$s</xliff:g>"</item>
+        <item>"Met <xliff:g id="person1">%1$s</xliff:g> en <xliff:g id="person2">%2$s</xliff:g>"</item>
+        <item>"Met <xliff:g id="person1">%1$s</xliff:g>, <xliff:g id="person2">%2$s</xliff:g> en <xliff:g id="person3">%3$s</xliff:g>"</item>
+        <item>"Met <xliff:g id="person1">%1$s</xliff:g>, <xliff:g id="person2">%2$s</xliff:g>, <xliff:g id="person3">%3$s</xliff:g> …"</item>
+        <item>"Met <xliff:g id="person1">%1$s</xliff:g>"</item>
+        <item>"met <xliff:g id="person1">%1$s</xliff:g> en <xliff:g id="person2">%2$s</xliff:g>"</item>
+        <item>"met <xliff:g id="person1">%1$s</xliff:g>, <xliff:g id="person2">%2$s</xliff:g> en <xliff:g id="person3">%3$s</xliff:g>"</item>
+        <item>"met <xliff:g id="person1">%1$s</xliff:g>, <xliff:g id="person2">%2$s</xliff:g>, <xliff:g id="person3">%3$s</xliff:g> …"</item>
+    </string-array>
+
+    <!-- Sentence Rules -->
+    <integer-array name="sentence_rules_masks" translatable="false">
+        <item>0x1000</item>
+        <item>0x1100</item>
+        <item>0x1010</item>
+        <item>0x100F</item>
+        <item>0x1110</item>
+        <item>0x1101</item>
+        <item>0x110F</item>
+        <item>0x1011</item>
+        <item>0x101F</item>
+        <item>0x1111</item>
+        <item>0x111F</item>
+    </integer-array>
+
+    <!--
+        From upper to lower, each byte means:
+		1. DATE
+		2. EVENT
+		3. PLACE
+		4. PERSON
+
+		each byte also means the number of each piece, and an 'F' means that
+		the number is not 0 nor in the others number which exist in the list.
+    -->
+    <string-array name="sentence_rules">
+        <item>"<xliff:g id="date_piece">%1$s</xliff:g>"</item>
+        <item>"<xliff:g id="event_piece">%2$s</xliff:g> <xliff:g id="date_piece">%1$s</xliff:g>"</item>
+        <item>"<xliff:g id="place_piece">%3$s</xliff:g> <xliff:g id="date_piece">%1$s</xliff:g>"</item>
+        <item>"<xliff:g id="person_piece">%4$s</xliff:g> <xliff:g id="date_piece">%1$s</xliff:g>"</item>
+        <item>"<xliff:g id="event_piece">%2$s</xliff:g> <xliff:g id="place_piece">%3$s</xliff:g> <xliff:g id="date_piece">%1$s</xliff:g>"</item>
+        <item>"<xliff:g id="person_piece">%4$s</xliff:g> <xliff:g id="event_piece">%2$s</xliff:g> <xliff:g id="date_piece">%1$s</xliff:g>"</item>
+        <item>"<xliff:g id="event_piece">%2$s</xliff:g> <xliff:g id="person_piece">%4$s</xliff:g> <xliff:g id="date_piece">%1$s</xliff:g>"</item>
+        <item>"<xliff:g id="person_piece">%4$s</xliff:g> <xliff:g id="place_piece">%3$s</xliff:g> <xliff:g id="date_piece">%1$s</xliff:g>"</item>
+        <item>"<xliff:g id="place_piece">%3$s</xliff:g> <xliff:g id="person_piece">%4$s</xliff:g> <xliff:g id="date_piece">%1$s</xliff:g>"</item>
+        <item>"<xliff:g id="person_piece">%4$s</xliff:g> <xliff:g id="event_piece">%2$s</xliff:g> <xliff:g id="place_piece">%3$s</xliff:g> <xliff:g id="date_piece">%1$s</xliff:g>"</item>
+        <item>"<xliff:g id="event_piece">%2$s</xliff:g> <xliff:g id="place_piece">%3$s</xliff:g> <xliff:g id="person_piece">%4$s</xliff:g> <xliff:g id="date_piece">%1$s</xliff:g>"</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Birthday -->
+    <plurals name="day_age">
+        <item quantity="one">"jeden dzień"</item>
+        <item quantity="other">"<xliff:g id="number">dni: %1$s</xliff:g> "</item>
+    </plurals>
+
+    <plurals name="week_age">
+        <item quantity="one">"jeden tydzień"</item>
+        <item quantity="other">"<xliff:g id="number">tygodni: %1$s</xliff:g> "</item>
+    </plurals>
+
+    <plurals name="month_age">
+        <item quantity="one">"jeden miesiąc"</item>
+        <item quantity="other">"<xliff:g id="number">miesięcy: %1$s</xliff:g> "</item>
+    </plurals>
+
+    <plurals name="year_age">
+        <item quantity="one">"jeden rok"</item>
+        <item quantity="other">"<xliff:g id="number">lat: %1$s</xliff:g> "</item>
+    </plurals>
+
+    <!-- Each Person -->
+    <string name="each_person_piece">"<xliff:g id="name">%1$s</xliff:g>(<xliff:g id="birthday">%2$s</xliff:g>)"</string>
+
+</resources>
