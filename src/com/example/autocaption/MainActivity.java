@@ -19,6 +19,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import com.example.autocaption.CaptionMaker.Person;
+import com.example.autocaption.CaptionMaker.Place;
+
 public class MainActivity extends Activity {
 	private final static int MAX_PERSON_NUM = 3;
 

@@ -344,4 +344,23 @@ public class CaptionMaker {
 				.setPlace(place).setPersons(persons).generate();
 	}
 
+	//-----------------------------------------------------------------------------
+	// Place
+	//-----------------------------------------------------------------------------
+	public static class Place {
+		public final static int VENUE = 0;
+		public final static int CITY = 1;
+
+		public int type;
+		public String value;
+	}
+
+	//-----------------------------------------------------------------------------
+	// Person
+	//-----------------------------------------------------------------------------
+	public static class Person {
+	    public Date birthday;
+	    public String name;
+	}
+
 }
