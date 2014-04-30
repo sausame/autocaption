@@ -187,11 +187,15 @@ public class CaptionMaker {
 	}
 
 	private String generateUpperWeeklyDate() {
-		return generateWeeklyDate(R.array.upper_days_in_last_week_string_values);
+		// return
+		// generateWeeklyDate(R.array.upper_days_in_last_week_string_values);
+		return SimpleDateTime.getDayNameOfWeek(mDate);
 	}
 
 	private String generateLowerWeeklyDate() {
-		return generateWeeklyDate(R.array.lower_days_in_last_week_string_values);
+		// return
+		// generateWeeklyDate(R.array.lower_days_in_last_week_string_values);
+		return SimpleDateTime.getDayNameOfWeek(mDate);
 	}
 
 	private String generateDate() {
@@ -344,9 +348,9 @@ public class CaptionMaker {
 				.setPlace(place).setPersons(persons).generate();
 	}
 
-	//-----------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------
 	// Place
-	//-----------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------
 	public static class Place {
 		public final static int VENUE = 0;
 		public final static int CITY = 1;
@@ -355,12 +359,12 @@ public class CaptionMaker {
 		public String value;
 	}
 
-	//-----------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------
 	// Person
-	//-----------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------
 	public static class Person {
-	    public Date birthday;
-	    public String name;
+		public Date birthday;
+		public String name;
 	}
 
 }

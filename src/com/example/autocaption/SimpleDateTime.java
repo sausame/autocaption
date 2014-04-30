@@ -7,6 +7,8 @@ import java.util.GregorianCalendar;
 
 public class SimpleDateTime {
 
+	public final static int COMMON_DAYS_IN_YEAR = 365;
+
     public static Date getDate(int year, int month, int day, int hour, int minute) {
         Calendar calendar = Calendar.getInstance();
 
@@ -20,14 +22,16 @@ public class SimpleDateTime {
 
         calendar.setTime(date1);
         int day1 = calendar.get(Calendar.DAY_OF_YEAR);
+		int year1 = calendar.get(Calendar.YEAR);
 
         calendar.setTime(date2);
         int day2 = calendar.get(Calendar.DAY_OF_YEAR);
+		int year2 = calendar.get(Calendar.YEAR);
 
-        return day2 - day1;
+        return (year2 - year1) * COMMON_DAYS_IN_YEAR + day2 - day1;
     }
 
-    public static int getDayOfWeek(Date date) {
+	public static int getDayOfWeek(Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
 
@@ -59,9 +63,7 @@ public class SimpleDateTime {
 	public static String getDayInThisWeek(Date date) {
 		int diff = compareFirstDayInThisWeek(date);
 		if (diff >= 0 && diff < Calendar.DAY_OF_WEEK) {
-			SimpleDateFormat sdf = new SimpleDateFormat();
-			sdf.applyLocalizedPattern("cccc");
-			return sdf.format(date);
+			return getDayNameOfWeek(date);
 		}
 
 		return null;
@@ -86,6 +88,12 @@ public class SimpleDateTime {
     public static String getDayString(Date date) {
         return SimpleDateFormat.getDateInstance().format(date);
     }
+
+	public static String getDayNameOfWeek(Date date) {
+		SimpleDateFormat sdf = new SimpleDateFormat();
+		sdf.applyLocalizedPattern("cccc");
+		return sdf.format(date);
+	}
 
     public static int getHourOfDay(Date date) {
         Calendar calendar = Calendar.getInstance();

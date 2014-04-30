@@ -142,19 +142,19 @@
 		6. TIME
     -->
     <integer-array name="date_rules_fields" translatable="false">
-        <item>0x100011</item>
+        <item>0x100010</item>
         <item>0x001011</item>
         <item>0x000010</item>
-        <item>0x010011</item>
+        <item>0x010010</item>
         <item>0x000111</item>
         <item>0x000010</item>
     </integer-array>
 
     <string-array name="date_rules">
-        <item><xliff:g id="upper_named_date">%1$s</xliff:g> <xliff:g id="time">%6$s</xliff:g> (<xliff:g id="date">%5$s</xliff:g>)</item>
+        <item><xliff:g id="upper_named_date">%1$s</xliff:g> (<xliff:g id="date">%5$s</xliff:g>)</item>
         <item><xliff:g id="upper_weekly_date">%3$s</xliff:g> <xliff:g id="time">%6$s</xliff:g> (<xliff:g id="date">%5$s</xliff:g>)</item>
         <item><xliff:g id="date">%5$s</xliff:g></item>
-        <item><xliff:g id="lower_named_date">%2$s</xliff:g> <xliff:g id="time">%6$s</xliff:g> (<xliff:g id="date">%5$s</xliff:g>)</item>
+        <item><xliff:g id="lower_named_date">%2$s</xliff:g> (<xliff:g id="date">%5$s</xliff:g>)</item>
         <item>on <xliff:g id="lower_weekly_date">%4$s</xliff:g> <xliff:g id="time">%6$s</xliff:g> (<xliff:g id="date">%5$s</xliff:g>)</item>
         <item>on <xliff:g id="date">%5$s</xliff:g></item>
     </string-array>
