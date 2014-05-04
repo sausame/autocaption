@@ -19,14 +19,10 @@
     <string-array name="upper_named_dates_string_values">
         <item>"اليوم"</item>
         <item>"أمس"</item>
-        <item>"أمس الأول"</item>
-        <item>"منذ يومين"</item>
     </string-array>
     <string-array name="lower_named_dates_string_values">
         <item>"اليوم"</item>
         <item>"أمس"</item>
-        <item>"أمس الأول"</item>
-        <item>"منذ يومين"</item>
     </string-array>
     <string-array name="upper_days_in_week_string_values">
         <item>"الأحد"</item>

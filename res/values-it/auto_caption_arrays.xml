@@ -19,14 +19,10 @@
     <string-array name="upper_named_dates_string_values">
         <item>"Oggi"</item>
         <item>"Ieri"</item>
-        <item>"L\'altro ieri"</item>
-        <item>"Tre giorni fa"</item>
     </string-array>
     <string-array name="lower_named_dates_string_values">
         <item>"oggi"</item>
         <item>"ieri"</item>
-        <item>"l\'altro ieri"</item>
-        <item>"tre giorni fa"</item>
     </string-array>
     <string-array name="upper_days_in_week_string_values">
         <item>"Domenica"</item>

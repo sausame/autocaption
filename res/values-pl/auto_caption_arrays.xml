@@ -19,14 +19,10 @@
     <string-array name="upper_named_dates_string_values">
         <item>"Dzisiaj"</item>
         <item>"Wczoraj"</item>
-        <item>"Przedwczoraj"</item>
-        <item>"Trzy dni temu"</item>
     </string-array>
     <string-array name="lower_named_dates_string_values">
         <item>"dzisiaj"</item>
         <item>"wczoraj"</item>
-        <item>"przedwczoraj"</item>
-        <item>"trzy dni temu"</item>
     </string-array>
     <string-array name="upper_days_in_week_string_values">
         <item>"Niedziela"</item>

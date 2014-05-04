@@ -19,14 +19,10 @@
     <string-array name="upper_named_dates_string_values">
         <item>"Hoje"</item>
         <item>"Ontem"</item>
-        <item>"Anteontem"</item>
-        <item>"Há 3 dias atrás"</item>
     </string-array>
     <string-array name="lower_named_dates_string_values">
         <item>"hoje"</item>
         <item>"ontem"</item>
-        <item>"anteontem"</item>
-        <item>"há 3 dias atrás"</item>
     </string-array>
     <string-array name="upper_days_in_week_string_values">
         <item>"Domingo"</item>

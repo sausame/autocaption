@@ -19,14 +19,10 @@
     <string-array name="upper_named_dates_string_values">
         <item>"Vandaag"</item>
         <item>"Gisteren"</item>
-        <item>"Eergisteren"</item>
-        <item>"Drie dagen geleden"</item>
     </string-array>
     <string-array name="lower_named_dates_string_values">
         <item>"vandaag"</item>
         <item>"gisteren"</item>
-        <item>"eergisteren"</item>
-        <item>"drie dagen geleden"</item>
     </string-array>
     <string-array name="upper_days_in_week_string_values">
         <item>"Zondag"</item>

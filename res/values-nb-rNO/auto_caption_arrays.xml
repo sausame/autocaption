@@ -19,14 +19,10 @@
     <string-array name="upper_named_dates_string_values">
         <item>"I dag"</item>
         <item>"i går"</item>
-        <item>"Dagen før i går"</item>
-        <item>"Dagen før dagen før i går"</item>
     </string-array>
     <string-array name="lower_named_dates_string_values">
         <item>"I dag"</item>
         <item>"i går"</item>
-        <item>"dagen før i går"</item>
-        <item>"dagen før dagen før i går"</item>
     </string-array>
     <string-array name="upper_days_in_week_string_values">
         <item>"Søndag"</item>

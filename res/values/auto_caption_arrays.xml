@@ -20,14 +20,10 @@
     <string-array name="upper_named_dates_string_values">
         <item>Today</item>
         <item>Yesterday</item>
-        <item>The day before yesterday</item>
-        <item>The bigger day before yesterday</item>
     </string-array>
     <string-array name="lower_named_dates_string_values">
         <item>today</item>
         <item>yesterday</item>
-        <item>the day before yesterday</item>
-        <item>the bigger day before yesterday</item>
     </string-array>
     <string-array name="upper_days_in_last_week_string_values">
         <item>Last Sunday</item>

@@ -19,14 +19,10 @@
     <string-array name="upper_named_dates_string_values">
         <item>"Hoy"</item>
         <item>"Ayer"</item>
-        <item>"Anteayer"</item>
-        <item>"El día antes de anteayer"</item>
     </string-array>
     <string-array name="lower_named_dates_string_values">
         <item>"hoy"</item>
         <item>"ayer"</item>
-        <item>"anteayer"</item>
-        <item>"el día antes de anteayer"</item>
     </string-array>
     <string-array name="upper_days_in_week_string_values">
         <item>"Domingo"</item>

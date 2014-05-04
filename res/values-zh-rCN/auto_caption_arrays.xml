@@ -19,14 +19,10 @@
     <string-array name="upper_named_dates_string_values">
         <item>"今天"</item>
         <item>"昨天"</item>
-        <item>"前天"</item>
-        <item>"大前天"</item>
     </string-array>
     <string-array name="lower_named_dates_string_values">
         <item>"今天"</item>
         <item>"昨天"</item>
-        <item>"前天"</item>
-        <item>"大前天"</item>
     </string-array>
     <string-array name="upper_days_in_week_string_values">
         <item>"星期日"</item>

@@ -19,14 +19,10 @@
     <string-array name="upper_named_dates_string_values">
         <item>"今日"</item>
         <item>"昨日"</item>
-        <item>"一昨日"</item>
-        <item>"一昨日よりも前"</item>
     </string-array>
     <string-array name="lower_named_dates_string_values">
         <item>"今日"</item>
         <item>"昨日"</item>
-        <item>"一昨日"</item>
-        <item>"一昨日よりも前"</item>
     </string-array>
     <string-array name="upper_days_in_week_string_values">
         <item>"日曜日"</item>
